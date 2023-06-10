@@ -36,7 +36,6 @@ public class PostService {
     private final CategoryScrapRepository categoryScrapRepository;
     private final PostLikeRepository postLikeRepository;
 
-    private final JwtService jwtService;
 
     public ViewPostCategoryResDto viewPostCategory() throws BaseException {
         try{
@@ -112,7 +111,6 @@ public class PostService {
     }
 
     public ToggleCapsuleLikeResDto ToggleCapsuleLike(ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) throws BaseException {
-        jwtService.getJwt();
         try{
             Post post = postRepository.findByPostIdxAndState(toggleCapsuleLikeReqDto.getPostIdx(), BaseEntity.State.ACTIVE);
             Member member = memberRepository.findByMemberIdxAndState(toggleCapsuleLikeReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
