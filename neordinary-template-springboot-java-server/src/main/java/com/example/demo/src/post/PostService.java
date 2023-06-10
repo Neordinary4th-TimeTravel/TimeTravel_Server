@@ -5,6 +5,7 @@ import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.common.scroll.ScrollPaginationCollection;
 import com.example.demo.src.member.entity.Member;
+import com.example.demo.src.member.MemberRepository;
 import com.example.demo.src.post.dto.*;
 import com.example.demo.src.post.entity.CategoryScrap;
 import com.example.demo.src.post.entity.Post;
@@ -15,10 +16,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.time.LocalDateTime;
 
 @Slf4j
@@ -26,6 +27,7 @@ import java.time.LocalDateTime;
 @Transactional
 public class PostService {
 
+    private final MemberRepository memberRepository;
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
     private final CategoryScrapRepository categoryScrapRepository;
@@ -59,7 +61,7 @@ public class PostService {
 
     public FindPostByTextResDto findPostByText(String postText, int scrollSize, LocalDateTime createdAt) throws BaseException {
         try{
-            PageRequest pageRequest = PageRequest.of(0, scrollSize + 1);
+            Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
             Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, createdAt, pageRequest);
             List<Post> postTitleList = page.getContent();
 
@@ -71,31 +73,36 @@ public class PostService {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
-    public ToggleCapsuleLikeResDto ToggleCapsuleLike(ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) throws BaseException {
-        jwtService.getJwt();
+
+    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize, LocalDateTime createdAt) {
         try{
-            Post post = postRepository.findByPostIdxAndState(toggleCapsuleLikeReqDto.getPostIdx(), BaseEntity.State.ACTIVE);
-            Member member = memberRepository.findByMemberIdxAndState(toggleCapsuleLikeReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
+            Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
+            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, createdAt, pageRequest);
+            List<Post> postTitleList = page.getContent();
 
-            Optional<PostLike> postLike = postLikeRepository.findByMemberIdxAndPostIdxAndState(member, post, BaseEntity.State.ACTIVE);
+            ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
 
-            if(postLike.isPresent() && postLike.get().getState() == BaseEntity.State.ACTIVE){
-                PostLike like = postLike.get();
-                if ((like.getState() == BaseEntity.State.ACTIVE)) {
-                    like.setState(BaseEntity.State.INACTIVE);
-                } else {
-                    like.setState(BaseEntity.State.ACTIVE);
-                }
-                postLikeRepository.save(like);
-                return new ToggleCapsuleLikeResDto(like.getState());
-            }
-            else{
-                PostLike savePostLike = new PostLike(member,post);
-                postLikeRepository.save(savePostLike);
-                return new ToggleCapsuleLikeResDto(savePostLike.getState());
-            }
+            return FindPostByCategoryResDto.of(postCursor, postRepository);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
 
-
+    public ViewPostResDto viewPost(Long postIdx) {
+        try{
+            Post post = postRepository.findAllByPostIdx(postIdx);
+            ViewPostResDto res = ViewPostResDto.builder()
+                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
+                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()))
+                    .postYear(post.getPostYear())
+                    .postTitle(post.getPostTitle())
+                    .postText(post.getPostText())
+                    .postSong(post.getPostSong())
+                    .postRelease(post.getPostRelease())
+                    .postPublic(post.getPostPublic())
+                    .build();
+            return res;
         }catch (Exception exception){
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);

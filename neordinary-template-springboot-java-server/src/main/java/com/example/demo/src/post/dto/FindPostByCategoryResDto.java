@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FindPostByTextResDto {
+public class FindPostByCategoryResDto {
 
     private static final long LAST_CURSOR = -1L;
 
@@ -24,24 +24,24 @@ public class FindPostByTextResDto {
     @Schema(name = "nextCursor", example = "4")
     private long nextCursor;
 
-    public FindPostByTextResDto(List<String> postTitleList, long nextCursor) {
+    public FindPostByCategoryResDto(List<String> postTitleList, long nextCursor) {
         this.postTitleList = postTitleList;
         this.nextCursor = nextCursor;
     }
 
-    public static FindPostByTextResDto of(ScrollPaginationCollection<Post> postScroll, PostRepository postRepository) {
+    public static FindPostByCategoryResDto of(ScrollPaginationCollection<Post> postScroll, PostRepository postRepository) {
         if (postScroll.isLastScroll()) {
-            return FindPostByTextResDto.newLastScroll(postScroll.getCurrentScrollItems(), postRepository);
+            return FindPostByCategoryResDto.newLastScroll(postScroll.getCurrentScrollItems(), postRepository);
         }
-        return FindPostByTextResDto.newScrollHasNext(postScroll.getCurrentScrollItems(), postRepository, postScroll.getNextCursor().getPostIdx());
+        return FindPostByCategoryResDto.newScrollHasNext(postScroll.getCurrentScrollItems(), postRepository, postScroll.getNextCursor().getPostIdx());
     }
 
-    private static FindPostByTextResDto newLastScroll(List<Post> postScroll, PostRepository postRepository) {
+    private static FindPostByCategoryResDto newLastScroll(List<Post> postScroll, PostRepository postRepository) {
         return newScrollHasNext(postScroll, postRepository, LAST_CURSOR);
     }
 
-    private static FindPostByTextResDto newScrollHasNext(List<Post> postScroll, PostRepository postRepository, long nextCursor) {
-        return new FindPostByTextResDto(getPostTitle(postScroll, postRepository), nextCursor);
+    private static FindPostByCategoryResDto newScrollHasNext(List<Post> postScroll, PostRepository postRepository, long nextCursor) {
+        return new FindPostByCategoryResDto(getPostTitle(postScroll, postRepository), nextCursor);
     }
 
     private static List<String> getPostTitle(List<Post> postScroll, PostRepository postRepository) {
@@ -51,3 +51,4 @@ public class FindPostByTextResDto {
     }
 
 }
+
