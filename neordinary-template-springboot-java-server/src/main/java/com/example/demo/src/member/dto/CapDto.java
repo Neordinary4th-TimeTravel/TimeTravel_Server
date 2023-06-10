@@ -12,9 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CapDto {
 
-    @Schema(name = "creationDateTime", example = "TIMESTAMP", required = true, description = "생성일")
+    @Schema(name = "creationDateTime", example = "DATETIME", required = true, description = "생성일")
     private String creationDateTime;
-    @Schema(name = "releaseDateTime", example = "TIMESTAMP", required = true, description = "해제일")
+    @Schema(name = "releaseDateTime", example = "DATETIME", required = true, description = "해제일")
     private String releaseDateTime;
     @Schema(name = "capsuleTitle", example = "제목", required = true, description = "캡슐 제목")
     private String capsuleTitle;
