@@ -45,4 +45,13 @@ public class Post extends BaseEntity {
         this.postRelease = postRelease;
         this.postPublic = postPublic;
     }
+
+    @Builder
+    public Post(Category categoryIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+        this.categoryIdx = categoryIdx;
+        this.postYear = postYear;
+        this.postText = postText;
+        this.postRelease = postRelease;
+        this.postPublic = postPublic;
+    }
 }
