@@ -175,10 +175,93 @@ public class MemberController {
         }
     }
     /**
-     * 내가 스크랩을 한 캡슐 목록
+     * 내가 좋아요를 한 캡슐 목록
      * */
+    @Tag(name = "내가 좋아요한 캡슐 목록 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "401", description = "유효하지 않은 JWT입니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "401", description = "JWT를 입력해주세요."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "일치하는 유저가 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "좋아요한 캡슐을 찾을 수 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
+    })
+    @Operation(summary = "내가 좋아요한 캡슐 목록", description = "내가 좋아요한 캡슐 목록 조회를 위한 API")
+    @GetMapping("/capsules/like/{member-idx}")
+    public BaseResponse<CapResDto> getLikePost(@RequestHeader("X-ACCESS-TOKEN") String token, @PathVariable("member-idx") Long memberIdx){
+        try{
 
+            Long parsedIdx = jwtService.getUserId();
+
+            if(!parsedIdx.equals(memberIdx)) throw new BaseException(BaseResponseStatus.INVALID_JWT);
+
+            return new BaseResponse<>(memberService.getLikePost(memberIdx));
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
     /**
      * 내가 태그 당한 캡슐 목록
      * */
+    @Tag(name = "내가 태그 당한 캡슐 목록 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "401", description = "유효하지 않은 JWT입니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "401", description = "JWT를 입력해주세요."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "일치하는 유저가 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "태그한 캡슐을 찾을 수 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
+    })
+    @Operation(summary = "내가 태그 당한 캡슐 목록", description = "내가 태그 당한 캡슐 목록 조회를 위한 API")
+    @GetMapping("/capsules/tag/{member-idx}")
+    public BaseResponse<CapResDto> getTagPost(@RequestHeader("X-ACCESS-TOKEN") String token, @PathVariable("member-idx") Long memberIdx) {
+        try{
+            Long parsedIdx = jwtService.getUserId();
+
+            if(!parsedIdx.equals(memberIdx)) throw new BaseException(BaseResponseStatus.INVALID_JWT);
+
+            return new BaseResponse<>(memberService.getTagPost(memberIdx));
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
+    /**
+     * 내가 작성한 캡슐 공개/비공개 조회
+     * */
+    @Tag(name = "내가 작성한 캡슐 공개/비공개 목록 API")
+
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "401", description = "유효하지 않은 JWT입니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "401", description = "JWT를 입력해주세요."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "일치하는 유저가 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "캡슐을 찾을 수 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
+    })
+    @Operation(summary = "내가 작성한 캡슐 공개/비공개 목록", description = "내가 작성한 캡슐 공개/비공개 목록 조회를 위한 API")
+    @GetMapping("/capsules/sight/{member-idx}")
+    public BaseResponse<CapSightResDto> getSightPost(@RequestHeader("X-ACCESS-TOKEN") String token, @PathVariable("member-idx") Long memberIdx) {
+        try{
+            Long parsedIdx = jwtService.getUserId();
+
+            if(!parsedIdx.equals(memberIdx)) throw new BaseException(BaseResponseStatus.INVALID_JWT);
+
+            return new BaseResponse<>(memberService.getSightPost(memberIdx));
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 }
