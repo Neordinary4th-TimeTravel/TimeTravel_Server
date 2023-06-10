@@ -2,9 +2,9 @@ package com.example.demo.src.Open;
 
 import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.exceptions.BaseException;
-import com.example.demo.common.response.BaseResponse;
 import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.src.Open.dto.PostCapsuleReqDto;
+import com.example.demo.src.Open.dto.PostCapsuleResDto;
 import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.post.entity.Category;
 import com.example.demo.src.post.entity.Post;
@@ -24,18 +24,20 @@ public class OpenService {
     @Autowired
     private final JwtService jwtService;
 
-    public Long createCapsule(PostCapsuleReqDto postCapsuleReqDto)throws BaseException {
+    public PostCapsuleReqDto createCapsule(PostCapsuleResDto postCapsuleReqDto)throws BaseException {
 
         try{
 
             Category categoryIdx = categoryRepository.getByCategoryIdxAndState(postCapsuleReqDto.getCategoryIdx(), BaseEntity.State.ACTIVE);
             Member memberIdx = memberRepository.getByMemberIdxAndState(postCapsuleReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
 
-            //비밀번호 암호화
-            Post post = new Post(categoryIdx, memberIdx, postCapsuleReqDto.getPostYear(), postCapsuleReqDto.getPostText(), postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
+            boolean test = postCapsuleReqDto.isPostPublic();
+            System.out.println(test);
+
+            Post post = new Post(categoryIdx, memberIdx, postCapsuleReqDto.getPostTitle(), postCapsuleReqDto.getPostYear(), postCapsuleReqDto.getPostText(), postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
             Post newPost = postRepository.save(post);
 
-            return newPost.getPostIdx();
+            return new PostCapsuleReqDto(newPost.getPostIdx());
         }catch (Exception exception){
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
