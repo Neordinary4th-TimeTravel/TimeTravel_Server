@@ -1,86 +1,51 @@
-com/example/demo/src/user/model/GoogleUser.java
- com.example.demo.src.user.model.GoogleUser
-com/example/demo/common/oauth/OAuthService.java
- com.example.demo.common.oauth.OAuthService
- com.example.demo.common.oauth.OAuthService$1
+com/example/demo/common/secret/Secret.java
+ com.example.demo.common.secret.Secret
 com/example/demo/utils/SHA256.java
  com.example.demo.utils.SHA256
-com/example/demo/src/user/model/PostUserReq.java
- com.example.demo.src.user.model.PostUserReq
+com/example/demo/src/post/entity/Category.java
+ com.example.demo.src.post.entity.Category
+ com.example.demo.src.post.entity.Category$CategoryBuilder
 com/example/demo/common/exceptions/BaseException.java
  com.example.demo.common.exceptions.BaseException
+com/example/demo/src/post/entity/PostLike.java
+ com.example.demo.src.post.entity.PostLike
+ com.example.demo.src.post.entity.PostLike$PostLikeBuilder
+com/example/demo/src/post/entity/Post.java
+ com.example.demo.src.post.entity.Post
+ com.example.demo.src.post.entity.Post$PostBuilder
+com/example/demo/common/entity/BaseEntity.java
+ com.example.demo.common.entity.BaseEntity
+ com.example.demo.common.entity.BaseEntity$State
 com/example/demo/common/response/BaseResponse.java
  com.example.demo.common.response.BaseResponse
 com/example/demo/utils/ValidationRegex.java
  com.example.demo.utils.ValidationRegex
-com/example/demo/src/user/model/PostLoginRes.java
- com.example.demo.src.user.model.PostLoginRes
+com/example/demo/src/post/entity/Comment.java
+ com.example.demo.src.post.entity.Comment
+ com.example.demo.src.post.entity.Comment$CommentBuilder
+com/example/demo/src/post/entity/PostTag.java
+ com.example.demo.src.post.entity.PostTag
+ com.example.demo.src.post.entity.PostTag$PostTagBuilder
+com/example/demo/src/member/entity/Member.java
+ com.example.demo.src.member.entity.Member
+ com.example.demo.src.member.entity.Member$MemberBuilder
 com/example/demo/common/response/BaseResponseStatus.java
  com.example.demo.common.response.BaseResponseStatus
-com/example/demo/src/user/model/PatchUserReq.java
- com.example.demo.src.user.model.PatchUserReq
-com/example/demo/common/oauth/SocialOauth.java
- com.example.demo.common.oauth.SocialOauth
 com/example/demo/common/exceptions/ExceptionAdvice.java
  com.example.demo.common.exceptions.ExceptionAdvice
-com/example/demo/src/test/model/MemoDto.java
- com.example.demo.src.test.model.MemoDto
-com/example/demo/common/Constant.java
- com.example.demo.common.Constant
- com.example.demo.common.Constant$SocialLoginType
-com/example/demo/src/test/TestController.java
- com.example.demo.src.test.TestController
-com/example/demo/common/oauth/GoogleOauth.java
- com.example.demo.common.oauth.GoogleOauth
-com/example/demo/src/test/MemoRepository.java
- com.example.demo.src.test.MemoRepository
-com/example/demo/common/secret/Secret.java
- com.example.demo.common.secret.Secret
-com/example/demo/src/user/model/PostLoginReq.java
- com.example.demo.src.user.model.PostLoginReq
-com/example/demo/src/test/model/GetMemoDto.java
- com.example.demo.src.test.model.GetMemoDto
-com/example/demo/src/test/TestDao.java
- com.example.demo.src.test.TestDao
-com/example/demo/src/test/CommentRepository.java
- com.example.demo.src.test.CommentRepository
-com/example/demo/src/user/model/GoogleOAuthToken.java
- com.example.demo.src.user.model.GoogleOAuthToken
-com/example/demo/src/test/model/PostCommentDto.java
- com.example.demo.src.test.model.PostCommentDto
-com/example/demo/common/entity/BaseEntity.java
- com.example.demo.common.entity.BaseEntity
- com.example.demo.common.entity.BaseEntity$State
-com/example/demo/src/user/UserController.java
- com.example.demo.src.user.UserController
-com/example/demo/src/test/TestService.java
- com.example.demo.src.test.TestService
-com/example/demo/src/user/model/PostUserRes.java
- com.example.demo.src.user.model.PostUserRes
-com/example/demo/src/user/UserRepository.java
- com.example.demo.src.user.UserRepository
-com/example/demo/src/test/entity/Memo.java
- com.example.demo.src.test.entity.Memo
- com.example.demo.src.test.entity.Memo$MemoBuilder
-com/example/demo/src/user/UserService.java
- com.example.demo.src.user.UserService
-com/example/demo/src/user/model/GetUserRes.java
- com.example.demo.src.user.model.GetUserRes
-com/example/demo/src/test/entity/Comment.java
- com.example.demo.src.test.entity.Comment
- com.example.demo.src.test.entity.Comment$CommentBuilder
 com/example/demo/common/config/RestTemplateConfig.java
  com.example.demo.common.config.RestTemplateConfig
-com/example/demo/src/user/entity/User.java
- com.example.demo.src.user.entity.User
- com.example.demo.src.user.entity.User$UserBuilder
 com/example/demo/common/config/SwaggerConfig.java
  com.example.demo.common.config.SwaggerConfig
-com/example/demo/src/user/model/GetSocialOAuthRes.java
- com.example.demo.src.user.model.GetSocialOAuthRes
 com/example/demo/DemoApplication.java
  com.example.demo.DemoApplication
 com/example/demo/common/config/WebConfig.java
  com.example.demo.common.config.WebConfig
+com/example/demo/src/post/entity/CategoryScrap.java
+ com.example.demo.src.post.entity.CategoryScrap
+ com.example.demo.src.post.entity.CategoryScrap$CategoryScrapBuilder
+com/example/demo/common/Constant.java
+ com.example.demo.common.Constant
+ com.example.demo.common.Constant$SocialLoginType
 com/example/demo/utils/JwtService.java
  com.example.demo.utils.JwtService

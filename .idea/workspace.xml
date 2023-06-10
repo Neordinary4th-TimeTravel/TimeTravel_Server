@@ -5,10 +5,82 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="044ee824-7c14-43f3-ac00-1597d801b7d3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/entity/Member.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Category.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/CategoryScrap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/PostLike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/PostTag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/utils/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/utils/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/oauth/GoogleOauth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/oauth/OAuthService$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/oauth/OAuthService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/oauth/SocialOauth.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/CommentRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/MemoRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/TestController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/TestDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/TestService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/entity/Comment$CommentBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/entity/Comment.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/entity/Memo$MemoBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/entity/Memo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/model/GetMemoDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/model/MemoDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/test/model/PostCommentDto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/entity/User$UserBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/entity/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/GetSocialOAuthRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/GetUserRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/GoogleOAuthToken.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/GoogleUser.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/PatchUserReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/PostLoginReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/PostLoginRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/PostUserReq.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/src/user/model/PostUserRes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/utils/JwtService.class" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/utils/JwtService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/oauth/GoogleOauth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/oauth/SocialOauth.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/CommentRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/MemoRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/TestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/TestDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/TestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/entity/Memo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/model/GetMemoDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/model/MemoDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/test/model/PostCommentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/entity/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/GetSocialOAuthRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/GetUserRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/GoogleOAuthToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/GoogleUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/PatchUserReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/PostLoginReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/PostLoginRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/PostUserReq.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/user/model/PostUserRes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +128,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectId" id="2R00RSq59iKevMNndqrD94vM0H1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -69,6 +144,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/yu/Desktop/TimeTravel_Server",
@@ -79,12 +155,19 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="common, dev" />
       <option name="ALTERNATIVE_JRE_PATH" value="azul-1.8" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="demo.main" />
@@ -113,5 +196,16 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
