@@ -19,9 +19,9 @@ public class FindPostByCategoryResDto {
 
     private static final long LAST_CURSOR = -1L;
 
-    @Schema(name = "postTitleList", example = "[제목1, 제목2, 제목3]")
+    @Schema(name = "postTitleList", example = "[제목1, 제목2, 제목3]", description = "캡슐 목록(제목)")
     private List<String> postTitleList = new ArrayList<>();
-    @Schema(name = "nextCursor", example = "4")
+    @Schema(name = "nextCursor", example = "4", description = "다음 커서")
     private long nextCursor;
 
     public FindPostByCategoryResDto(List<String> postTitleList, long nextCursor) {

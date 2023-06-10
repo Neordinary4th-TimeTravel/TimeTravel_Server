@@ -15,9 +15,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ScrapPostCategoryReqDto {
 
-    @Schema(name = "memberIdx", example = "1")
+    @Schema(name = "memberIdx", example = "1", description = "멤버 인덱스")
     private Member memberIdx;
 
-    @Schema(name = "categoryIdx", example = "1")
+    @Schema(name = "categoryIdx", example = "1", description = "카테고리 인덱스")
     private Category CategoryIdx;
 }

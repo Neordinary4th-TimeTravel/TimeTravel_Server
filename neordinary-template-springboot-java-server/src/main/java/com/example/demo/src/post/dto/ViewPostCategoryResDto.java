@@ -12,6 +12,6 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class ViewPostCategoryResDto {
-    @Schema(name = "categoryList", example = "[노래, 영화, 만화]")
+    @Schema(name = "categoryList", example = "[노래, 영화, 만화]", description = "카테고리 목록")
     private List<String> categoryList;
 }
