@@ -7,8 +7,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class PostCapsuleReqDto {
-    private Long capsuleIdx;
+@NoArgsConstructor
+public class GetOpenAIReqDto {
+    private String postText;
 }

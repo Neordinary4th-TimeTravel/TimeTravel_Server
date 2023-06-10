@@ -50,8 +50,8 @@ public enum BaseResponseStatus {
     DELETE_FAIL_USERNAME(false,HttpStatus.INTERNAL_SERVER_ERROR.value(),"유저 삭제 실패"),
     MODIFY_FAIL_MEMO(false,HttpStatus.INTERNAL_SERVER_ERROR.value(),"메모 수정 실패"),
 
-    UNEXPECTED_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "예상치 못한 에러가 발생했습니다.");
-
+    UNEXPECTED_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "예상치 못한 에러가 발생했습니다."),
+    OPENAI_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "OPENAI 연결에 실패했습니다");
 
     private final boolean isSuccess;
     private final int code;
