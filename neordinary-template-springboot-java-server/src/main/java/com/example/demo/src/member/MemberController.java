@@ -223,6 +223,7 @@ public class MemberController {
 
             return new BaseResponse<>(memberService.getSightPost(memberIdx));
         }catch (BaseException exception){
+            log.error(exception.getMessage());
             return new BaseResponse<>(exception.getStatus());
         }
     }

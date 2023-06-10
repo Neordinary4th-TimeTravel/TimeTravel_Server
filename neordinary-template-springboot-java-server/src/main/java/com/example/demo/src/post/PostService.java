@@ -95,7 +95,7 @@ public class PostService {
             Post post = postRepository.findAllByPostIdx(postIdx);
             ViewPostResDto res = ViewPostResDto.builder()
                     .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
-                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()))
+                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()).getCategoryName())
                     .postYear(post.getPostYear())
                     .postTitle(post.getPostTitle())
                     .postText(post.getPostText())
@@ -143,9 +143,11 @@ public class PostService {
 
     public ViewImminentCapsuleResDto viewImminentCapsule(Long memberIdx) {
         try{
+
             Optional<Member> member = memberRepository.findById(memberIdx);
             Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(member.get(), LocalDateTime.now());
             Optional<List<Post>> tagPostList = postTagRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
+
             LocalDateTime compareDateTime = LocalDateTime.MAX;
             Post tagPost = null;
             for(Post idx : tagPostList.get()) {
@@ -161,7 +163,7 @@ public class PostService {
             else post = tagPost;
             ViewImminentCapsuleResDto res = ViewImminentCapsuleResDto.builder()
                     .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
-                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()))
+                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()).getCategoryName())
                     .postYear(post.getPostYear())
                     .postTitle(post.getPostTitle())
                     .postText(post.getPostText())
