@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="044ee824-7c14-43f3-ac00-1597d801b7d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,16 +43,6 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="demo" type="f1a62948:ProjectNode" />
               </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="demo" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="demo" type="f1a62948:ProjectNode" />
-                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
-              </path>
             </expand>
             <select />
           </tree_state>
@@ -56,6 +59,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,19 +80,30 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "dev",
     "last_opened_file_path": "/Users/yu/Desktop/TimeTravel_Server",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="azul-1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="demo.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
