@@ -1,0 +1,5 @@
+02:06:16.550 WARN  [File:ExceptionAdvice.java] [Func:BaseExceptionHandle] [Line:16] [Message:BaseException. error message: OPENAI 연결에 실패했습니다]- BaseException. error message: OPENAI 연결에 실패했습니다
+02:06:54.324 WARN  [File:ExceptionAdvice.java] [Func:BaseExceptionHandle] [Line:16] [Message:BaseException. error message: OPENAI 연결에 실패했습니다]- BaseException. error message: OPENAI 연결에 실패했습니다
+02:08:13.222 WARN  [File:ExceptionAdvice.java] [Func:BaseExceptionHandle] [Line:16] [Message:BaseException. error message: OPENAI 연결에 실패했습니다]- BaseException. error message: OPENAI 연결에 실패했습니다
+02:08:37.984 WARN  [File:ExceptionAdvice.java] [Func:BaseExceptionHandle] [Line:16] [Message:BaseException. error message: OPENAI 연결에 실패했습니다]- BaseException. error message: OPENAI 연결에 실패했습니다
+02:09:10.307 WARN  [File:ExceptionAdvice.java] [Func:BaseExceptionHandle] [Line:16] [Message:BaseException. error message: OPENAI 연결에 실패했습니다]- BaseException. error message: OPENAI 연결에 실패했습니다

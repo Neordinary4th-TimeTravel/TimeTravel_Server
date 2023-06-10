@@ -1,9 +1,13 @@
 package com.example.demo.src.Open;
 
+import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponse;
+import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.common.secret.Secret;
+import com.example.demo.src.Open.dto.GetOpenAIReqDto;
 import com.example.demo.src.Open.dto.Message;
 import com.example.demo.src.Open.dto.PostCapsuleReqDto;
+import com.example.demo.src.Open.dto.PostCapsuleResDto;
 import com.example.demo.utils.JwtService;
 import com.example.demo.utils.ValidationRegex;
 import io.swagger.v3.oas.annotations.Operation;
@@ -13,7 +17,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -49,7 +52,8 @@ public class OpenController {
             @Parameter(name = "format", description = "chatGPT가 생성할 형식", example = "편지"),
     })
     @GetMapping("/result")
-    public BaseResponse<String> getUserReservations(@RequestParam(required = true) String keyword,@RequestParam String format) {
+    public BaseResponse<GetOpenAIReqDto> getOpenAI(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestParam(required = true) String keyword, @RequestParam String format) throws BaseException {
+        jwtService.getJwt();
         if(format.isEmpty()){
             format = "편지";
         }
@@ -75,11 +79,11 @@ public class OpenController {
             ResponseEntity<Map> response = restTemplate.postForEntity(ENDPOINT, requestEntity, Map.class);
             // answer 추출
             String[] responses = response.getBody().get("choices").toString().split("role=assistant, content=|}, finish_reason=stop, index=0}");
-            String answer = responses[1];
-            return new BaseResponse<>(answer);
+            GetOpenAIReqDto getOpenAIResDto = new GetOpenAIReqDto(responses[1]);
+            return new BaseResponse<>(getOpenAIResDto);
         }
         catch (Exception e){
-            return new BaseResponse<>(e.getMessage());
+            throw new BaseException(BaseResponseStatus.OPENAI_ERROR);
         }
     }
 
@@ -93,23 +97,13 @@ public class OpenController {
             @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
     })
     @Operation(summary = "캡슐 등록 API", description = "캡슐 등록하기 위한 api")
-    @Parameters({
-            @Parameter(name = "categoryIdx", description = "카테고리 정보", example = "{}"),
-            @Parameter(name = "memberIdx", description = "생성자 정보", example = "{}"),
-            @Parameter(name = "postYear", description = "타겟 연도", example = "2000"),
-            @Parameter(name = "postText", description = "미래에 보여줄 글", example = "안녕~~"),
-            @Parameter(name = "postRelease", description = "글을 읽을 수 있는 날짜", example = "2024/03/12"),
-            @Parameter(name = "postPublic", description = "공개(1)/비공개(0)", example = "1"),
-    })
     @PostMapping("capsule")
-    public BaseResponse<String> createCapsule(@RequestBody PostCapsuleReqDto postCapsuleReqDto) {
-        ValidationRegex.isRegexTime(postCapsuleReqDto.getPostRelease().toString());
-        try {
-            Long capsuleIdx = openService.createCapsule(postCapsuleReqDto);
-            return new BaseResponse<>("캡슐등록 성공");
-        }
-        catch (Exception e){
-            return  new BaseResponse<>(e.getMessage());
+    public BaseResponse<PostCapsuleReqDto> createCapsule(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestBody PostCapsuleResDto postCapsuleResDto) {
+        ValidationRegex.isRegexTime(postCapsuleResDto.getPostRelease().toString());
+        try{
+            return new BaseResponse<>(openService.createCapsule(postCapsuleResDto));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
         }
     }
 }
