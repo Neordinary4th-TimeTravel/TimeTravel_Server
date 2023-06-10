@@ -52,7 +52,8 @@ public class OpenController {
             @Parameter(name = "format", description = "chatGPT가 생성할 형식", example = "편지"),
     })
     @GetMapping("/result")
-    public BaseResponse<GetOpenAIReqDto> getOpenAI(@RequestParam(required = true) String keyword, @RequestParam String format) throws BaseException {
+    public BaseResponse<GetOpenAIReqDto> getOpenAI(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestParam(required = true) String keyword, @RequestParam String format) throws BaseException {
+        jwtService.getJwt();
         if(format.isEmpty()){
             format = "편지";
         }
@@ -97,7 +98,7 @@ public class OpenController {
     })
     @Operation(summary = "캡슐 등록 API", description = "캡슐 등록하기 위한 api")
     @PostMapping("capsule")
-    public BaseResponse<PostCapsuleReqDto> createCapsule(@RequestBody PostCapsuleResDto postCapsuleResDto) {
+    public BaseResponse<PostCapsuleReqDto> createCapsule(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestBody PostCapsuleResDto postCapsuleResDto) {
         ValidationRegex.isRegexTime(postCapsuleResDto.getPostRelease().toString());
         try{
             return new BaseResponse<>(openService.createCapsule(postCapsuleResDto));

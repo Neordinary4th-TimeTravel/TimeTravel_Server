@@ -4,12 +4,18 @@ import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.src.member.dto.*;
 import com.example.demo.src.member.entity.Member;
+import com.example.demo.src.post.entity.Post;
+import com.example.demo.src.post.repository.CommentRepository;
+import com.example.demo.src.post.repository.PostRepository;
 import com.example.demo.utils.JwtService;
 import com.example.demo.utils.SHA256;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -19,7 +25,12 @@ public class MemberService {
 
     private final MemberRepository memberRepository;
 
+    private final PostRepository postRepository;
+
+    private final CommentRepository commentRepository;
+
     private final JwtService jwtService;
+
 
     /**
      * 유저 회원가입 - Service
@@ -52,6 +63,7 @@ public class MemberService {
         try{
             target = memberRepository.findByMemberEmailAndMemberPwd(req.getEmail(), SHA256.encrypt(req.getPassword()));
         }catch (Exception exception){
+            log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
         //없을시 로그인 실패 판정
@@ -68,6 +80,7 @@ public class MemberService {
         try{
             isExist = memberRepository.existsByMemberEmail(req.getEmail());
         }catch (Exception exception){
+            log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
 
@@ -83,6 +96,7 @@ public class MemberService {
         try {
             targetOption = memberRepository.findById(req.getMemberIdx());
         }catch (Exception exception) {
+            log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
 
@@ -96,5 +110,116 @@ public class MemberService {
 
         return new PatchNicknameResDto(target.getNickname());
 
+    }
+
+    public CapResDto getWrittenCap(Long memberIdx) throws BaseException{
+        Optional<Member> targetMember;
+        Optional<List<Post>> postList;
+
+        try{
+            targetMember = memberRepository.findById(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
+
+        try{
+            postList = postRepository.findAllByMemberIdx(targetMember.get());
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        postList.orElseThrow(() -> new BaseException(BaseResponseStatus.POST_NOT_FOUND));
+
+        List<CapDto> closedList = new ArrayList<>();
+        List<CapDto> opendList = new ArrayList<>();
+
+        LocalDateTime current = LocalDateTime.now();
+        for(Post post : postList.get()){
+            if(current.isBefore(post.getPostRelease())){
+                // 열리기 전에
+                closedList.add(
+                        new CapDto(
+                                post.getCreatedAt().toString(),
+                                post.getPostRelease().toString(),
+                                post.getPostTitle()
+                                )
+                );
+            }
+            else{
+                opendList.add(
+                        new CapDto(
+                                post.getCreatedAt().toString(),
+                                post.getPostRelease().toString(),
+                                post.getPostTitle()
+                        )
+                );
+            }
+        }
+
+        return CapResDto.builder()
+                .closedList(closedList)
+                .openedList(opendList)
+                .build();
+    }
+
+    public CapResDto getCommentedPost(Long memberIdx) {
+        Optional<Member> targetMember;
+
+        try{
+            targetMember = memberRepository.findById(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
+
+        Optional<List<Long>> postIdxList;
+
+        try{
+            postIdxList = commentRepository.findPostIdxByMemberIdx(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        List<CapDto> closedList = new ArrayList<>();
+        List<CapDto> opendList = new ArrayList<>();
+
+        postIdxList.orElseThrow(()-> new BaseException(BaseResponseStatus.COMMENT_NOT_EXIST));
+        LocalDateTime current = LocalDateTime.now();
+
+        for(Long idx : postIdxList.get()){
+            Optional<Post> post = postRepository.findById(idx);
+
+            if(current.isBefore(post.get().getPostRelease())){
+                // 열리기 전에
+                closedList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+            else{
+                opendList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+        }
+
+        return CapResDto.builder()
+                .closedList(closedList)
+                .openedList(opendList)
+                .build();
     }
 }
