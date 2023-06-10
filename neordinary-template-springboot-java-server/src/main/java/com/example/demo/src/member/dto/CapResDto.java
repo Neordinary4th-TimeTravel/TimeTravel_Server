@@ -10,9 +10,9 @@ import java.util.List;
 @NoArgsConstructor
 public class CapResDto {
 
-    @Schema(name = "closedList", example = "List", required = true, description = "열리기 전 리스트")
+    @Schema(name = "closedList", required = true, description = "열리기 전 리스트")
     private List<CapDto> closedList;
-    @Schema(name = "openedList", example = "List", required = true, description = "열린 리스트")
+    @Schema(name = "openedList", required = true, description = "열린 리스트")
     private List<CapDto> openedList;
 
     @Builder
