@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae85dfea-4c6e-4a4e-8be7-7b6a7951807c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/CapSightResDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostTagRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/CommentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostLikeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostLikeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/dto/ToggleCapsuleLikeResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/dto/ToggleCapsuleLikeResDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +84,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1686423378279</updated>
-      <workItem from="1686423381829" duration="450000" />
+      <workItem from="1686423381829" duration="1894000" />
     </task>
     <servers />
   </component>
