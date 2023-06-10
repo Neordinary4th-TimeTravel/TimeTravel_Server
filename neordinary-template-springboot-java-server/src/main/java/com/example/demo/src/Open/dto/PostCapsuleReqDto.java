@@ -1,5 +1,6 @@
 package com.example.demo.src.Open.dto;
 
+import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.post.entity.Category;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostCapsuleReqDto {
-    private Category categoryIdx;
+    private Long categoryIdx;
     private Long memberIdx;
     private Integer postYear;
     private String postText;

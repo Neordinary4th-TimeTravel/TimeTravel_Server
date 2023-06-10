@@ -5,6 +5,7 @@ import com.example.demo.common.secret.Secret;
 import com.example.demo.src.Open.dto.Message;
 import com.example.demo.src.Open.dto.PostCapsuleReqDto;
 import com.example.demo.utils.JwtService;
+import com.example.demo.utils.ValidationRegex;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.Parameters;
@@ -48,7 +49,10 @@ public class OpenController {
             @Parameter(name = "format", description = "chatGPT가 생성할 형식", example = "편지"),
     })
     @GetMapping("/result")
-    public BaseResponse<String> getUserReservations(@RequestParam String keyword,@RequestParam String format) {
+    public BaseResponse<String> getUserReservations(@RequestParam(required = true) String keyword,@RequestParam String format) {
+        if(format.isEmpty()){
+            format = "편지";
+        }
         // 프로프트 생성
         String prompt = keyword + ", " + format + " 형식으로 50자 이내로 작성해줘.";
 
@@ -98,8 +102,8 @@ public class OpenController {
             @Parameter(name = "postPublic", description = "공개(1)/비공개(0)", example = "1"),
     })
     @PostMapping("capsule")
-    public BaseResponse<String> postCapsule(@RequestBody PostCapsuleReqDto postCapsuleReqDto) {
-        //TODO: validation
+    public BaseResponse<String> createCapsule(@RequestBody PostCapsuleReqDto postCapsuleReqDto) {
+        ValidationRegex.isRegexTime(postCapsuleReqDto.getPostRelease().toString());
         try {
             Long capsuleIdx = openService.createCapsule(postCapsuleReqDto);
             return new BaseResponse<>("캡슐등록 성공");

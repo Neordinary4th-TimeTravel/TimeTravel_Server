@@ -52,8 +52,9 @@ public class Post extends BaseEntity {
     }
 
     @Builder
-    public Post(Category categoryIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+    public Post(Category categoryIdx, Member memberIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
         this.categoryIdx = categoryIdx;
+        this.memberIdx = memberIdx;
         this.postYear = postYear;
         this.postText = postText;
         this.postRelease = postRelease;

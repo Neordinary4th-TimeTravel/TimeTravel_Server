@@ -1,5 +1,6 @@
 package com.example.demo.src.post;
 
+import com.example.demo.src.post.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

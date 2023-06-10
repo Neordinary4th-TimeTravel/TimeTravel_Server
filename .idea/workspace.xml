@@ -4,26 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="044ee824-7c14-43f3-ac00-1597d801b7d3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/LoginReqDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/LoginResDto.java" afterDir="false" />
+    <list default="true" id="c6b8248e-2d3c-4752-832e-c7679113ba32" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/CategoryOpenRepositroy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/MemberOpenRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/6.9.3/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/response/BaseResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/classes/java/main/com/example/demo/common/response/BaseResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/JoinReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/JoinReqDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/JoinResDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/JoinResDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/PostService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/utils/ValidationRegex.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/utils/ValidationRegex.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +28,6 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/neordinary-template-springboot-java-server">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
             <expand />
@@ -53,27 +40,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="JpbToolWindowState">
-    <option name="isToolWindowVisible" value="false" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
-  </component>
-  <component name="ProjectId" id="2R00RSq59iKevMNndqrD94vM0H1" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -81,34 +54,9 @@
     "RequestMappingsPanelOrder1": "1",
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/MemberSecond",
-    "last_opened_file_path": "/Users/yu/Desktop/TimeTravel_Server",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
-    ]
+    "node.js.selected.package.tslint": "(autodetect)"
   }
-}</component>
-  <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.example.demo.src.member" />
-    </key>
-  </component>
+}]]></component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="demo.main" />
@@ -124,45 +72,15 @@
       </method>
     </configuration>
     <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="azul-11" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <module name="demo.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
       <option name="VM_PARAMETERS" value="-Dspring.profiles.active=dev" />
-      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
-        <option name="credential" />
-        <option name="region" />
-        <option name="useCurrentConnection" value="false" />
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="044ee824-7c14-43f3-ac00-1597d801b7d3" name="Changes" comment="" />
-      <created>1686371682438</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1686371682438</updated>
-      <workItem from="1686371683904" duration="1810000" />
-    </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
   </component>
 </project>
