@@ -1,5 +1,6 @@
 package com.example.demo.src.post.repository;
 
+import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.post.entity.Category;
 import com.example.demo.src.post.entity.Post;
@@ -25,4 +26,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
                                                      @Param("pageRequest") PageRequest pageRequest);
 
     String findPostTitleByPostIdx(Long postIdx);
+    Post findByPostIdxAndState(Long postIdx, BaseEntity.State state);
 }
