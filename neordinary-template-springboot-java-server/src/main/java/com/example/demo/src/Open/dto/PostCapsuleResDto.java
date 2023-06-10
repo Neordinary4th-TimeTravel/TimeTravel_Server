@@ -23,6 +23,8 @@ public class PostCapsuleResDto {
     private Integer postYear;
     @Schema(name = "postText", example = "안녕 잘지내?", description = "게시글", required = true)
     private String postText;
+    @Schema(name = "postSong", example = "Y-프리스타일", description = "추억의 노래", required = true)
+    private String postSong;
     @Schema(name = "postRelease", example = "2024-10-05T14:48:00.000Z", description = "공개 시간", required = true)
     private LocalDateTime postRelease;
     @Schema(name = "postPublic", example = "1", description = "1: 공개, 0:비공개", required = true)
