@@ -194,7 +194,7 @@ public class MemberController {
     })
     @Operation(summary = "내가 태그 당한 캡슐 목록", description = "내가 태그 당한 캡슐 목록 조회를 위한 API")
     @GetMapping("/capsules/tag/{member-idx}")
-    public BaseResponse<CapResDto> getTagPost(@RequestHeader("X-ACCESS-TOKEN") String token, @PathVariable("member-idx") Long memberIdx) {
+    public BaseResponse<CapResDto> getTagPost(@PathVariable("member-idx") Long memberIdx) {
         try{
 
             return new BaseResponse<>(memberService.getTagPost(memberIdx));
@@ -218,7 +218,7 @@ public class MemberController {
     })
     @Operation(summary = "내가 작성한 캡슐 공개/비공개 목록", description = "내가 작성한 캡슐 공개/비공개 목록 조회를 위한 API")
     @GetMapping("/capsules/sight/{member-idx}")
-    public BaseResponse<CapSightResDto> getSightPost(String token, @PathVariable("member-idx") Long memberIdx) {
+    public BaseResponse<CapSightResDto> getSightPost(@PathVariable("member-idx") Long memberIdx) {
         try{
 
             return new BaseResponse<>(memberService.getSightPost(memberIdx));
