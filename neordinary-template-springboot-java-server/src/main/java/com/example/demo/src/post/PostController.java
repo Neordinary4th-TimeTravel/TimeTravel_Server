@@ -104,6 +104,24 @@ public class PostController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+    /**
+     * 캡슐 - 캡슐 좋아요 API
+     * @RequestBody 캡슐 좋아요에 필요한 DTO
+     * @return
+     */
+    @Tag(name = "캡슐 좋아요 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
+    })
+    @Operation(summary = "캡슐 좋아요 API", description = "캡슐 등록하기 위한 api")
+    @PostMapping("capsule")
+    public BaseResponse<ToggleCapsuleLikeResDto> createCapsule(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestBody ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) {
+        try{
+            return new BaseResponse<>(postService.ToggleCapsuleLike(toggleCapsuleLikeReqDto));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 
 }

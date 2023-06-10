@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -32,7 +33,6 @@ public class PostService {
     private final CategoryRepository categoryRepository;
     private final CategoryScrapRepository categoryScrapRepository;
     private final PostLikeRepository postLikeRepository;
-    private final MemberRepository memberRepository;
 
     private final JwtService jwtService;
 
@@ -108,4 +108,37 @@ public class PostService {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
+
+    public ToggleCapsuleLikeResDto ToggleCapsuleLike(ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) throws BaseException {
+        jwtService.getJwt();
+        try{
+            Post post = postRepository.findByPostIdxAndState(toggleCapsuleLikeReqDto.getPostIdx(), BaseEntity.State.ACTIVE);
+            Member member = memberRepository.findByMemberIdxAndState(toggleCapsuleLikeReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
+
+            Optional<PostLike> postLike = postLikeRepository.findByMemberIdxAndPostIdxAndState(member, post, BaseEntity.State.ACTIVE);
+
+            if(postLike.isPresent() && postLike.get().getState() == BaseEntity.State.ACTIVE){
+                PostLike like = postLike.get();
+                if ((like.getState() == BaseEntity.State.ACTIVE)) {
+                    like.setState(BaseEntity.State.INACTIVE);
+                } else {
+                    like.setState(BaseEntity.State.ACTIVE);
+                }
+                postLikeRepository.save(like);
+                return new ToggleCapsuleLikeResDto(like.getState());
+            }
+            else{
+                PostLike savePostLike = new PostLike(member,post);
+                postLikeRepository.save(savePostLike);
+                return new ToggleCapsuleLikeResDto(savePostLike.getState());
+            }
+
+
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
+
+
 }
