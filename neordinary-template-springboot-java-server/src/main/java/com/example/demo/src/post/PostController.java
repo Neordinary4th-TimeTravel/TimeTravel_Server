@@ -65,8 +65,8 @@ public class PostController {
     @Tag(name = "게시판 캡슐 검색(내용 기반) API")
     @Operation(summary = "게시판 캡슐 검색(내용 기반)", description = "게시판에서 특정 내용을 포함한 캡슐 검색을 위한 API")
     @GetMapping("/category/search/text")
-    public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "post-text") String postText,
-                                                             @RequestParam(name = "scroll-size") int scrollSize){
+    public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "postText") String postText,
+                                                             @RequestParam(name = "scrollSize") int scrollSize){
         try{
             return new BaseResponse<>(postService.findPostByText(postText, scrollSize));
         }catch (BaseException exception) {
@@ -80,8 +80,8 @@ public class PostController {
     @Tag(name = "특정 카테고리의 캡슐 목록 조회 API")
     @Operation(summary = "특정 카테고리의 캡슐 목록 조회", description = "특정 카테고리 게시판의 캡슐 목록 조회를 위한 API")
     @GetMapping("/category/search")
-    public BaseResponse<FindPostByCategoryResDto> findPostByCategory(@RequestParam(name = "category-idx") Long categoryIdx,
-                                                                     @RequestParam(name = "scroll-size") int scrollSize){
+    public BaseResponse<FindPostByCategoryResDto> findPostByCategory(@RequestParam(name = "categoryIdx") Long categoryIdx,
+                                                                     @RequestParam(name = "scrollSize") int scrollSize){
         try{
             return new BaseResponse<>(postService.findPostByCategory(categoryIdx, scrollSize));
         }catch (BaseException exception) {
@@ -95,7 +95,7 @@ public class PostController {
     @Tag(name = "캡슐 내용 조회 API")
     @Operation(summary = "캡슐 내용 조회", description = "캡슐 내용 상세 조회를 위한 API")
     @GetMapping("/")
-    public BaseResponse<ViewPostResDto> viewPost(@RequestParam(name = "post-idx") Long postIdx){
+    public BaseResponse<ViewPostResDto> viewPost(@RequestParam(name = "postIdx") Long postIdx){
         try{
             return new BaseResponse<>(postService.viewPost(postIdx));
         }catch (BaseException exception) {
@@ -114,7 +114,7 @@ public class PostController {
     })
     @Operation(summary = "캡슐 좋아요 API", description = "캡슐 등록하기 위한 api")
     @PostMapping("capsule")
-    public BaseResponse<ToggleCapsuleLikeResDto> createCapsule(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestBody ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) {
+    public BaseResponse<ToggleCapsuleLikeResDto> createCapsule(@RequestBody ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) {
         try{
             return new BaseResponse<>(postService.ToggleCapsuleLike(toggleCapsuleLikeReqDto));
         }catch (BaseException exception) {
@@ -127,8 +127,8 @@ public class PostController {
      * */
     @Tag(name = "곧 열리는 캡슐 단일 조회 API")
     @Operation(summary = "곧 열리는 캡슐 단일 조회", description = "가장 열리기 임박한 캡슐 단일 조회를 위한 API")
-    @GetMapping("/close/{member-id}")
-    public BaseResponse<ViewImminentCapsuleResDto> viewImminentCapsule(@PathVariable("member-idx") Long memberIdx){
+    @GetMapping("/close/{memberId}")
+    public BaseResponse<ViewImminentCapsuleResDto> viewImminentCapsule(@PathVariable("memberIdx") Long memberIdx){
         try{
             return new BaseResponse<>(postService.viewImminentCapsule(memberIdx));
         }catch (BaseException exception) {
@@ -142,8 +142,8 @@ public class PostController {
     @Tag(name = "설정 연도에 따른 실시간 인기 캡슐 목록 조회 API")
     @Operation(summary = "설정 연도에 따른 실시간 인기 캡슐 목록 조회", description = "설정 연도에 따른 실시간 인기 캡슐 목록 조회를 위한 API")
     @GetMapping("/category/search/year")
-    public BaseResponse<FindPostByYearResDto> findPostByYear(@RequestParam(name = "post-year") int postYear,
-                                         @RequestParam(name = "scroll-size") int scrollSize){
+    public BaseResponse<FindPostByYearResDto> findPostByYear(@RequestParam(name = "postYear") int postYear,
+                                         @RequestParam(name = "scrollSize") int scrollSize){
         try{
             return new BaseResponse<>(postService.findPostByYear(postYear, scrollSize));
         }catch (BaseException exception) {

@@ -125,8 +125,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 작성한 캡슐 목록", description = "내가 작성한 캡슐 목록 조회를 위한 API")
-    @GetMapping("/capsules/{member-idx}")
-    public BaseResponse<CapResDto> getWrittenCap(@PathVariable("member-idx") Long memberIdx){
+    @GetMapping("/capsules/{memberIdx}")
+    public BaseResponse<CapResDto> getWrittenCap(@PathVariable("memberIdx") Long memberIdx){
 
         try{
 
@@ -149,8 +149,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 댓글을 단 캡슐 목록", description = "내가 댓글을 단 캡슐 목록 조회를 위한 API")
-    @GetMapping("/capsules/comment/{member-idx}")
-    public BaseResponse<CapResDto> getCommentedPost(@PathVariable("member-idx") Long memberIdx){
+    @GetMapping("/capsules/comment/{memberIdx}")
+    public BaseResponse<CapResDto> getCommentedPost(@PathVariable("memberIdx") Long memberIdx){
         try{
 
             return new BaseResponse<>(memberService.getCommentedPost(memberIdx));
@@ -171,8 +171,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 좋아요한 캡슐 목록", description = "내가 좋아요한 캡슐 목록 조회를 위한 API")
-    @GetMapping("/capsules/like/{member-idx}")
-    public BaseResponse<CapResDto> getLikePost(@PathVariable("member-idx") Long memberIdx){
+    @GetMapping("/capsules/like/{memberIdx}")
+    public BaseResponse<CapResDto> getLikePost(@PathVariable("memberIdx") Long memberIdx){
         try{
 
             return new BaseResponse<>(memberService.getLikePost(memberIdx));
@@ -193,8 +193,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 태그 당한 캡슐 목록", description = "내가 태그 당한 캡슐 목록 조회를 위한 API")
-    @GetMapping("/capsules/tag/{member-idx}")
-    public BaseResponse<CapResDto> getTagPost(@PathVariable("member-idx") Long memberIdx) {
+    @GetMapping("/capsules/tag/{memberIdx}")
+    public BaseResponse<CapResDto> getTagPost(@PathVariable("memberIdx") Long memberIdx) {
         try{
 
             return new BaseResponse<>(memberService.getTagPost(memberIdx));
@@ -217,8 +217,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 작성한 캡슐 공개/비공개 목록", description = "내가 작성한 캡슐 공개/비공개 목록 조회를 위한 API")
-    @GetMapping("/capsules/sight/{member-idx}")
-    public BaseResponse<CapSightResDto> getSightPost(@PathVariable("member-idx") Long memberIdx) {
+    @GetMapping("/capsules/sight/{memberIdx}")
+    public BaseResponse<CapSightResDto> getSightPost(@PathVariable("memberIdx") Long memberIdx) {
         try{
 
             return new BaseResponse<>(memberService.getSightPost(memberIdx));
@@ -240,8 +240,8 @@ public class MemberController {
                     , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "내가 스크랩(즐겨찾기)한 카테고리 목록", description = "내가 스크랩(즐겨찾기)한 카테고리 목록을 조회하기 위한 API")
-    @GetMapping("/capsules/scrap/{member-idx}")
-    public BaseResponse<FindScrapCategoryResDto> findScrapCategory(@PathVariable("member-idx") Long memberIdx){
+    @GetMapping("/capsules/scrap/{memberIdx}")
+    public BaseResponse<FindScrapCategoryResDto> findScrapCategory(@PathVariable("memberIdx") Long memberIdx){
 
         try{
             return new BaseResponse<>(memberService.findScrapCategory(memberIdx));
