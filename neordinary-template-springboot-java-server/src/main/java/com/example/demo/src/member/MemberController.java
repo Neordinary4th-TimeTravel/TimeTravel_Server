@@ -2,30 +2,25 @@ package com.example.demo.src.member;
 
 import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponse;
-import com.example.demo.src.member.dto.JoinReqDto;
-import com.example.demo.src.member.dto.JoinResDto;
-import com.example.demo.src.member.dto.LoginReqDto;
-import com.example.demo.src.member.dto.LoginResDto;
+import com.example.demo.common.response.BaseResponseStatus;
+import com.example.demo.src.member.dto.*;
 import com.example.demo.utils.JwtService;
+import com.example.demo.utils.ValidationRegex;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
-@ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다."),
-        @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다.")
-})
 @RestController
 @RequestMapping("/api/member/")
+@ApiResponses(value = {@ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")})
 @RequiredArgsConstructor
 public class MemberController {
 
@@ -53,7 +48,11 @@ public class MemberController {
      * */
     @Tag(name = "로그인 API")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "404", description = "없는 아이디거나 비밀번호가 틀렸습니다.")
+
+            @ApiResponse(responseCode = "404", description = "없는 아이디거나 비밀번호가 틀렸습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     @Operation(summary = "로그인", description = "유저 로그인을 위한 API")
     @PostMapping("/login")
@@ -65,9 +64,50 @@ public class MemberController {
         }
     }
     /**
+     * 이메일 중복 체크
+     * */
+    @Tag(name = "이메일 중복 체크 API")
+    @ApiResponses(value = {
+
+            @ApiResponse(responseCode = "500", description = "이메일 형식을 확인해주세요."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "중복된 이메일입니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
+    })
+    @Operation(summary = "로그인", description = "이메일 중복 체크를 위한 API")
+    @PostMapping("/check-email")
+    public BaseResponse<EmailCheckResDto> checkEmail(@RequestBody EmailCheckReqDto req) {
+
+        try{
+            if(!ValidationRegex.isRegexEmail(req.getEmail())) throw new BaseException(BaseResponseStatus.POST_USERS_INVALID_EMAIL);
+
+            return new BaseResponse<>(memberService.chechEmail(req));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+    /**
      * 닉네임 변경
      * */
+    @Tag(name = "닉네임 변경 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "404", description = "일치하는 유저가 없습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "데이터베이스 연결에 실패하였습니다."
+                    , content = @Content(schema = @Schema(implementation = BaseResponse.class)))
+    })
+    @Operation(summary = "로그인", description = "닉네임 변경을 위한 API")
+    @PatchMapping("/member/mod-nickname")
+    public BaseResponse<PatchNicknameResDto> patchNickname(@RequestBody PatchNicknameReqDto req){
 
+        try{
+            return new BaseResponse<>(memberService.pathNickname(req));
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
     /**
      * 내가 작성한 캡슐 목록
      * */

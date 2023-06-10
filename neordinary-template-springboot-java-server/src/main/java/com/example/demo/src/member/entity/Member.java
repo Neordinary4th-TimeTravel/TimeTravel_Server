@@ -42,4 +42,8 @@ public class Member extends BaseEntity {
         this.gender = gender;
         this.age = age;
     }
+
+    public void patchNickname(String target){
+        this.nickname = target;
+    }
 }

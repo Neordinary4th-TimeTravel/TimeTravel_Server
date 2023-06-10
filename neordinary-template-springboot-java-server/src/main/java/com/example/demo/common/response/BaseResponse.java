@@ -14,8 +14,11 @@ import static com.example.demo.common.response.BaseResponseStatus.SUCCESS;
 @JsonPropertyOrder({"isSuccess", "code", "message", "result"})
 public class BaseResponse<T> {
     @JsonProperty("isSuccess")
+    @Schema(name = "isSuccess", example = "true")
     private final Boolean isSuccess;
+    @Schema(name = "message")
     private final String message;
+    @Schema(name = "code")
     private final int code;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T result;
