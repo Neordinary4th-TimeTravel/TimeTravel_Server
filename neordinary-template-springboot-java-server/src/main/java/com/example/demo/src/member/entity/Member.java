@@ -26,6 +26,7 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 45)
     private String nickname;
 
+    //0: 남성 1: 여성
     @Column(nullable = false)
     private Boolean gender;
 

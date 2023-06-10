@@ -1,5 +1,8 @@
 package com.example.demo.src.Open;
 
+import com.example.demo.common.exceptions.BaseException;
+import com.example.demo.common.response.BaseResponse;
+import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.src.Open.dto.PostCapsuleReqDto;
 import com.example.demo.src.post.entity.Post;
 import com.example.demo.utils.JwtService;
@@ -12,12 +15,21 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 @Service
 public class OpenService {
-    private final PostRepository postRepository;
+    private final PostOpenRepository postRepository;
     @Autowired
     private final JwtService jwtService;
 
-    public void createCapsule(PostCapsuleReqDto postCapsuleReqDto){
-        Post post = new Post(postCapsuleReqDto.getCategoryIdx(),postCapsuleReqDto.getPostYear(),postCapsuleReqDto.getPostText(),postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
-        postRepository.save(post);
+    public Long createCapsule(PostCapsuleReqDto postCapsuleReqDto)throws BaseException {
+
+        try{
+            //비밀번호 암호화
+            Post post = new Post(postCapsuleReqDto.getCategoryIdx(),postCapsuleReqDto.getPostYear(),postCapsuleReqDto.getPostText(),postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
+            Post newPost = postRepository.save(post);
+
+            return newPost.getPostIdx();
+        }catch (Exception exception){
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
     }
+
 }
