@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PostCapsuleResDto {
-    @Schema(name = "categoryIdx", example = "1", description = "카테고리 아이디", required = true)
-    private Long categoryIdx;
+    @Schema(name = "categoryIdx", example = "음악", description = "카테고리 이름", required = true)
+    private String categoryName;
     @Schema(name = "memberIdx", example = "1", description = "유저 아이디", required = true)
     private Long memberIdx;
     @Schema(name = "postTitle", example = "미래의 나에게", description = "게시글 제목", required = true)
