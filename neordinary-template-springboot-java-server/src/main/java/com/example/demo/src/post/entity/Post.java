@@ -6,7 +6,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = false)
@@ -42,9 +41,10 @@ public class Post extends BaseEntity {
     private Boolean postPublic;
 
     @Builder
-    public Post(Long postIdx, Category categoryIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+    public Post(Long postIdx, Category categoryIdx, Member memberIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
         this.postIdx = postIdx;
         this.categoryIdx = categoryIdx;
+        this.memberIdx = memberIdx;
         this.postYear = postYear;
         this.postText = postText;
         this.postRelease = postRelease;
