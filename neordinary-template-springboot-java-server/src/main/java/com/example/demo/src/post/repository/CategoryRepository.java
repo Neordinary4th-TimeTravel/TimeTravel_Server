@@ -9,4 +9,5 @@ import java.util.List;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     List<String> findCategoryNameOrderByCategoryName();
+    String findCategoryNameByCategoryIdx(Long categoryIdx);
 }
