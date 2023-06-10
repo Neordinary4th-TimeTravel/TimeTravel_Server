@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/TimeTravel_Server.iml" filepath="$PROJECT_DIR$/.idea/TimeTravel_Server.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/demo.main.iml" />
     </modules>
   </component>
 </project>
