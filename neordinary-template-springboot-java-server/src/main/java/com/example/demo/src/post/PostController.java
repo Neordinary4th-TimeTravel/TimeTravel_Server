@@ -80,10 +80,11 @@ public class PostController {
     @Tag(name = "특정 카테고리의 캡슐 목록 조회 API")
     @Operation(summary = "특정 카테고리의 캡슐 목록 조회", description = "특정 카테고리 게시판의 캡슐 목록 조회를 위한 API")
     @GetMapping("/category/search")
-    public BaseResponse<FindPostByCategoryResDto> findPostByCategory(@RequestParam(name = "categoryIdx") Long categoryIdx,
+    public BaseResponse<FindPostByCategoryResDto> findPostByCategory(@RequestParam(name = "categoryName") String categoryName,
+                                                                     @RequestParam(name = "postYear") int postYear,
                                                                      @RequestParam(name = "scrollSize") int scrollSize){
         try{
-            return new BaseResponse<>(postService.findPostByCategory(categoryIdx, scrollSize));
+            return new BaseResponse<>(postService.findPostByCategory(categoryName, postYear, scrollSize));
         }catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }

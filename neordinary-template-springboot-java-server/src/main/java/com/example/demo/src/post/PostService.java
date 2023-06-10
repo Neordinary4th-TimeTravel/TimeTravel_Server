@@ -75,11 +75,11 @@ public class PostService {
         }
     }
 
-    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize) {
+    public FindPostByCategoryResDto findPostByCategory(String categoryName, int postYear, int scrollSize) {
         try{
-            Optional<Category> category = categoryRepository.findById(categoryIdx);
+            Optional<Category> category = categoryRepository.findByCategoryName(categoryName);
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(category.get(), pageRequest);
+            Page<Post> page = postRepository.findAllByCategoryIdxAndPostYearOrderByCreatedAtDesc(category.get(), postYear, pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);

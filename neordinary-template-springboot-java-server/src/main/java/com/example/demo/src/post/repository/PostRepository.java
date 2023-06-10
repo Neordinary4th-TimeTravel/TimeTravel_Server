@@ -28,7 +28,8 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post findByPostIdxAndState(Long postIdx, BaseEntity.State state);
 
-    Page<Post> findAllByCategoryIdxOrderByCreatedAtDesc(@Param("categoryIdx") Category categoryIdx,
+    Page<Post> findAllByCategoryIdxAndPostYearOrderByCreatedAtDesc(@Param("categoryIdx") Category categoryIdx,
+                                                        @Param("postYear") int postYear,
                                                         @Param("pageRequest") Pageable pageRequest);
 
     Post findAllByPostIdx(Long postIdx);

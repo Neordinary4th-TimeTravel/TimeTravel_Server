@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
@@ -17,4 +18,5 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     @Query(nativeQuery = true, value = "select * from CATEGORY left join CATEGORYSCRAP C on CATEGORY.categoryIdx = C.categoryIdx" +
             " where C.memberIdx = :memberIdx and C.state = 'ACTIVE'")
     List<Category> findCategoryIdxByMemberIdx(@Param("memberIdx") Long memberIdx);
+    Optional<Category> findByCategoryName(String categoryName);
 }
