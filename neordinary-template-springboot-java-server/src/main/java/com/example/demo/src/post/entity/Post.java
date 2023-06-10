@@ -1,6 +1,7 @@
 package com.example.demo.src.post.entity;
 
 import com.example.demo.common.entity.BaseEntity;
+import com.example.demo.src.member.entity.Member;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,6 +23,10 @@ public class Post extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "categoryIdx")
     private Category categoryIdx;
+
+    @ManyToOne
+    @JoinColumn(name = "memberIdx")
+    private Member memberIdx;
 
     @Column(nullable = false)
     private Integer postYear;
