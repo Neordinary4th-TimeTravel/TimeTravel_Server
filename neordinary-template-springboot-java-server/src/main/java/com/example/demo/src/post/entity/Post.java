@@ -28,10 +28,16 @@ public class Post extends BaseEntity {
     private Member memberIdx;
 
     @Column(nullable = false)
+    private String postTitle;
+
+    @Column(nullable = false)
     private Integer postYear;
 
     @Column(nullable = false)
     private String postText;
+
+    @Column(nullable = false)
+    private String postSong;
 
     @Column(nullable = false)
     private LocalDateTime postRelease;
@@ -41,10 +47,23 @@ public class Post extends BaseEntity {
     private Boolean postPublic;
 
     @Builder
-    public Post(Long postIdx, Category categoryIdx, Member memberIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+    public Post(Long postIdx, Category categoryIdx, Member memberIdx, String postTitle, Integer postYear, String postText, String postSong, LocalDateTime postRelease, Boolean postPublic) {
         this.postIdx = postIdx;
         this.categoryIdx = categoryIdx;
         this.memberIdx = memberIdx;
+        this.postTitle = postTitle;
+        this.postYear = postYear;
+        this.postText = postText;
+        this.postSong = postSong;
+        this.postRelease = postRelease;
+        this.postPublic = postPublic;
+    }
+
+    @Builder
+    public Post(Category categoryIdx, Member memberIdx,String postTitle ,Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+        this.categoryIdx = categoryIdx;
+        this.memberIdx = memberIdx;
+        this.postTitle = postTitle;
         this.postYear = postYear;
         this.postText = postText;
         this.postRelease = postRelease;
