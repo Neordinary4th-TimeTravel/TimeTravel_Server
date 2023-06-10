@@ -264,4 +264,20 @@ public class MemberController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * 회원가입
+     * */
+    @Tag(name = "내가 스크랩(즐겨찾기)한 카테고리 목록")
+    @Operation(summary = "내가 스크랩(즐겨찾기)한 카테고리 목록", description = "내가 스크랩(즐겨찾기)한 카테고리 목록을 조회하기 위한 API")
+    @GetMapping("/capsules/scrap/{member-idx}")
+    public BaseResponse<FindScrapCategoryResDto> findScrapCategory(@PathVariable("member-idx") Long memberIdx){
+
+        try{
+            return new BaseResponse<>(memberService.findScrapCategory(memberIdx));
+        }catch (BaseException exception) {
+            log.error(exception.getMessage());
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 }

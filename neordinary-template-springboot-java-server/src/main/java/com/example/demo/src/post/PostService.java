@@ -53,10 +53,10 @@ public class PostService {
         }
     }
 
-    public FindPostByTextResDto findPostByText(String postText, int scrollSize, LocalDateTime createdAt) throws BaseException {
+    public FindPostByTextResDto findPostByText(String postText, int scrollSize) throws BaseException {
         try{
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, createdAt, pageRequest);
+            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
@@ -68,10 +68,10 @@ public class PostService {
         }
     }
 
-    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize, LocalDateTime createdAt) {
+    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize) {
         try{
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, createdAt, pageRequest);
+            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);

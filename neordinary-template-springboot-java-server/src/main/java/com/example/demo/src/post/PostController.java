@@ -60,10 +60,9 @@ public class PostController {
     @Operation(summary = "게시판 캡슐 검색(내용 기반)", description = "게시판에서 특정 내용을 포함한 캡슐 검색을 위한 API")
     @GetMapping("/category/search")
     public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "post-text") String postText,
-                                                             @RequestParam(name = "scroll-size") int scrollSize,
-                                                             @RequestParam(name = "created-at") LocalDateTime createdAt){
+                                                             @RequestParam(name = "scroll-size") int scrollSize){
         try{
-            return new BaseResponse<>(postService.findPostByText(postText, scrollSize, createdAt));
+            return new BaseResponse<>(postService.findPostByText(postText, scrollSize));
         }catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }
@@ -76,10 +75,9 @@ public class PostController {
     @Operation(summary = "특정 카테고리의 캡슐 목록 조회", description = "특정 카테고리 게시판의 캡슐 목록 조회를 위한 API")
     @GetMapping("/category/search")
     public BaseResponse<FindPostByCategoryResDto> findPostByCategory(@RequestParam(name = "category-idx") Long categoryIdx,
-                                                                     @RequestParam(name = "scroll-size") int scrollSize,
-                                                                     @RequestParam(name = "created-at") LocalDateTime createdAt){
+                                                                     @RequestParam(name = "scroll-size") int scrollSize){
         try{
-            return new BaseResponse<>(postService.findPostByCategory(categoryIdx, scrollSize, createdAt));
+            return new BaseResponse<>(postService.findPostByCategory(categoryIdx, scrollSize));
         }catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }
