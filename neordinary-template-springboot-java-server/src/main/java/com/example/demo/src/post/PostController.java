@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 @Tag(name = "캡슐 API")
 @ApiResponses({
         @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다."),
@@ -60,9 +62,11 @@ public class PostController {
     @Tag(name = "게시판 캡슐 검색(내용 기반) API")
     @Operation(summary = "게시판 캡슐 검색(내용 기반)", description = "게시판에서 특정 내용을 포함한 캡슐 검색을 위한 API")
     @PostMapping("/category/search")
-    public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "post-text") FindPostByTextReqDto req){
+    public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "post-text") String postText,
+                                                             @RequestParam(name = "scroll-size") int scrollSize,
+                                                             @RequestParam(name = "created-at") LocalDateTime createdAt){
         try{
-            return new BaseResponse<>(postService.findPostByText(req));
+            return new BaseResponse<>(postService.findPostByText(postText, scrollSize, createdAt));
         }catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }

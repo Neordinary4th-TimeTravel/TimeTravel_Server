@@ -20,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.time.LocalDateTime;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -53,16 +54,15 @@ public class PostService {
         }
     }
 
-    public FindPostByTextResDto findPostByText(FindPostByTextReqDto req) throws BaseException {
+    public FindPostByTextResDto findPostByText(String postText, int scrollSize, LocalDateTime createdAt) throws BaseException {
         try{
-            PageRequest pageRequest = PageRequest.of(0, req.getScrollSize() + 1);
-            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(req.getPostText(), req.getCreatedAt(), pageRequest);
+            PageRequest pageRequest = PageRequest.of(0, scrollSize + 1);
+            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, createdAt, pageRequest);
             List<Post> postTitleList = page.getContent();
 
-            ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, req.getScrollSize());
-            FindPostByTextResDto res = FindPostByTextResDto.of(postCursor, postRepository);
+            ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
 
-            return res;
+            return FindPostByTextResDto.of(postCursor, postRepository);
         }catch (Exception exception){
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
