@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class JoinReqDto {
-    @Schema(name = "email", example = "example@example.com", required = true)
+    @Schema(name = "email", example = "example@example.com", required = true, description = "유저 이메일")
     private String email;
-    @Schema(name = "password", example = "123456", required = true)
+    @Schema(name = "password", example = "123456", required = true, description = "비밀번호")
     private String password;
-    @Schema(name = "nickname", example = "Rookie", required = true)
+    @Schema(name = "nickname", example = "Rookie", required = true, description = "닉네임(아이디)")
     private String nickname;
     @Schema(name = "gender", example = "0", required = true, description = "남자면 0 여자면 1")
     private Integer gender;

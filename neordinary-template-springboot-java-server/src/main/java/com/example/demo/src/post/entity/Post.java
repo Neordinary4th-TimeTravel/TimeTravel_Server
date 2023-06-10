@@ -1,11 +1,11 @@
 package com.example.demo.src.post.entity;
 
 import com.example.demo.common.entity.BaseEntity;
+import com.example.demo.src.member.entity.Member;
 import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @EqualsAndHashCode(callSuper = false)
@@ -23,6 +23,10 @@ public class Post extends BaseEntity {
     @JoinColumn(name = "categoryIdx")
     private Category categoryIdx;
 
+    @ManyToOne
+    @JoinColumn(name = "memberIdx")
+    private Member memberIdx;
+
     @Column(nullable = false)
     private Integer postYear;
 
@@ -37,9 +41,10 @@ public class Post extends BaseEntity {
     private Boolean postPublic;
 
     @Builder
-    public Post(Long postIdx, Category categoryIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
+    public Post(Long postIdx, Category categoryIdx, Member memberIdx, Integer postYear, String postText, LocalDateTime postRelease, Boolean postPublic) {
         this.postIdx = postIdx;
         this.categoryIdx = categoryIdx;
+        this.memberIdx = memberIdx;
         this.postYear = postYear;
         this.postText = postText;
         this.postRelease = postRelease;
