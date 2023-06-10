@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostCapsuleReqDto {
-    @Schema(name = "capsuleIdx", example = "1", description = "게시물 아이디", required = true)
+    @Schema(name = "capsuleIdx", example = "1", description = "캡슐 인덱스")
     private Long capsuleIdx;
 }

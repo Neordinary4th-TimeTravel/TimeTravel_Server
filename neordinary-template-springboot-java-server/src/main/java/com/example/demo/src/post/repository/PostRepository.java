@@ -20,17 +20,15 @@ import java.util.Optional;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<List<Post>> findAllByMemberIdx(Member memberIdx);
 
-    @Query("SELECT p.* FROM Post p WHERE p.postPublic = 1 AND p.postText LIKE CONCAT('%', :postText, '%')" +
+    @Query("SELECT p FROM Post p WHERE p.postPublic = 1 AND p.postText LIKE CONCAT('%', :postText, '%')" +
             "ORDER BY p.createdAt DESC")
     Page<Post> findAllByPostTextOrderByCreatedAtDesc(@Param("postText") String postText,
-                                                     @Param("createdAt") LocalDateTime createdAt,
                                                      @Param("pageRequest") Pageable pageRequest);
     String findPostTitleByPostIdx(Long postIdx);
 
     Post findByPostIdxAndState(Long postIdx, BaseEntity.State state);
 
     Page<Post> findAllByCategoryIdxOrderByCreatedAtDesc(@Param("categoryIdx") Long categoryIdx,
-                                                        @Param("createdAt") LocalDateTime createdAt,
                                                         @Param("pageRequest") Pageable pageRequest);
 
     Post findAllByPostIdx(Long postIdx);

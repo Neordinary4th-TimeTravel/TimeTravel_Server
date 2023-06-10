@@ -4,11 +4,9 @@ import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.src.member.dto.*;
 import com.example.demo.src.member.entity.Member;
+import com.example.demo.src.post.entity.Category;
 import com.example.demo.src.post.entity.Post;
-import com.example.demo.src.post.repository.CommentRepository;
-import com.example.demo.src.post.repository.PostLikeRepository;
-import com.example.demo.src.post.repository.PostRepository;
-import com.example.demo.src.post.repository.PostTagRepository;
+import com.example.demo.src.post.repository.*;
 import com.example.demo.utils.JwtService;
 import com.example.demo.utils.SHA256;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +17,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class MemberService {
+    private final CategoryRepository categoryRepository;
 
     private final MemberRepository memberRepository;
 
@@ -34,6 +34,8 @@ public class MemberService {
     private final PostLikeRepository postLikeRepository;
 
     private final PostTagRepository postTagRepository;
+
+    private final CategoryScrapRepository categoryScrapRepository;
 
     private final JwtService jwtService;
 
@@ -397,5 +399,18 @@ public class MemberService {
                 .privateList(privateList)
                 .publicList(publicList)
                 .build();
+    }
+
+    public FindScrapCategoryResDto findScrapCategory(Long memberIdx) {
+        try{
+            List<Category> categoryList = categoryScrapRepository.findCategoryIdxByMemberIdx(memberIdx);
+            List<String> categoryNameList = categoryList.stream()
+                    .map(category -> categoryRepository.findCategoryNameByCategoryIdx(category.getCategoryIdx()))
+                    .collect(Collectors.toList());
+            return new FindScrapCategoryResDto(categoryNameList);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
     }
 }

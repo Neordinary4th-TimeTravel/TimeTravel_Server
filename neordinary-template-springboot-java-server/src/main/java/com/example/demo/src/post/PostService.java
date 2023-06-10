@@ -17,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -25,6 +26,7 @@ import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
+@Service
 @Transactional
 public class PostService {
 
@@ -59,10 +61,10 @@ public class PostService {
         }
     }
 
-    public FindPostByTextResDto findPostByText(String postText, int scrollSize, LocalDateTime createdAt) throws BaseException {
+    public FindPostByTextResDto findPostByText(String postText, int scrollSize) throws BaseException {
         try{
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, createdAt, pageRequest);
+            Page<Post> page = postRepository.findAllByPostTextOrderByCreatedAtDesc(postText, pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
@@ -74,10 +76,10 @@ public class PostService {
         }
     }
 
-    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize, LocalDateTime createdAt) {
+    public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize) {
         try{
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, createdAt, pageRequest);
+            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
