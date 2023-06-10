@@ -113,7 +113,7 @@ public class PostController {
             @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
     })
     @Operation(summary = "캡슐 좋아요 API", description = "캡슐 등록하기 위한 api")
-    @PostMapping("capsule")
+    @PostMapping("/like")
     public BaseResponse<ToggleCapsuleLikeResDto> createCapsule(@RequestBody ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) {
         try{
             return new BaseResponse<>(postService.ToggleCapsuleLike(toggleCapsuleLikeReqDto));
@@ -150,5 +150,25 @@ public class PostController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
+    /**
+     * 캡슐 - 캡슐 댓글 추가 API
+     * @RequestBody 캡슐 댓글 작성에 필요한 DTO
+     * @return
+     */
+    @Tag(name = "캡슐 댓글 추가 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
+    })
+    @Operation(summary = "캡슐 댓글 추가 API", description = "캡슐에 댓글을 추가하기 위한 api")
+    @PostMapping("/comment")
+    public BaseResponse<BaseResponseStatus> createComment(@RequestBody CreateCommentReqDto createCommentReqDto) {
+        try{
+            return new BaseResponse<>(postService.createComment(createCommentReqDto));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 
 }

@@ -27,6 +27,7 @@ import java.util.Optional;
 @Service
 @Transactional
 public class PostService {
+    private final CommentRepository commentRepository;
 
     private final MemberRepository memberRepository;
     private final PostRepository postRepository;
@@ -185,6 +186,21 @@ public class PostService {
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
 
             return FindPostByYearResDto.of(postCursor, postRepository);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
+
+    public BaseResponseStatus createComment(CreateCommentReqDto createCommentReqDto) {
+        try{
+            Comment comment = Comment.builder()
+                    .postIdx(createCommentReqDto.getPostIdx())
+                    .memberIdx(createCommentReqDto.getMemberIdx())
+                    .commentText(createCommentReqDto.getCommentText())
+                    .build();
+            commentRepository.save(comment);
+            return BaseResponseStatus.SUCCESS;
         }catch (Exception exception){
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
