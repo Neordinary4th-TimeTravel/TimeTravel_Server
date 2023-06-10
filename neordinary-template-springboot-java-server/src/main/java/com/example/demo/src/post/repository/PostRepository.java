@@ -20,7 +20,7 @@ import java.util.Optional;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Optional<List<Post>> findAllByMemberIdx(Member memberIdx);
 
-    @Query("SELECT p FROM Post p WHERE p.postPublic = 1 AND p.postText LIKE CONCAT('%', :postText, '%')" +
+    @Query("SELECT p FROM Post p WHERE p.postPublic = true AND p.postText LIKE CONCAT('%', :postText, '%')" +
             "ORDER BY p.createdAt DESC")
     Page<Post> findAllByPostTextOrderByCreatedAtDesc(@Param("postText") String postText,
                                                      @Param("pageRequest") Pageable pageRequest);
@@ -36,9 +36,18 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Post findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(@Param("memberIdx") Member memberIdx,
                                                                          @Param("postRelease") LocalDateTime postRelease);
 
+    @Query(nativeQuery = true, value = "select * from POST left join POSTTAG P on POST.postIdx = P.postIdx where " +
+            "P.memberIdx = :memberIdx and P.state = 'ACTIVE'")
+    Optional<List<Post>> findPostIdxByMemberIdx(@Param("memberIdx") Member memberIdx);
+
+    @Query(nativeQuery = true, value = "select POST.* from POST left join POSTLIKE on POST.postIdx = POSTLIKE.postIdx" +
+            " where POSTLIKE.postIdx = :memberIdx and POSTLIKE.state = 'ACTIVE'")
+    Optional<List<Post>> findPostIdxByMemberIdx(@Param("memberIdx") Long memberIdx);
+
     @Query("SELECT q FROM (SELECT p FROM Post p WHERE p.postYear = :postYear) q" +
-            "JOIN q.postLike l ON q.postIdx = l.postIdx" +
-            "ORDER BY COUNT(l.postIdx) DESC")
+            " JOIN q.postLike l ON q.postIdx = l.postIdx" +
+            " ORDER BY COUNT(l.postIdx) DESC")
     Page<Post> findAllByPostYearLimitMaxCountPostIdx(@Param("postYear") int postYear,
                                                      @Param("pageRequest") Pageable pageRequest);
+
 }

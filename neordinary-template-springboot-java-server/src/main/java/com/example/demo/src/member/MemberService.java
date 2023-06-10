@@ -232,22 +232,13 @@ public class MemberService {
     }
 
     public CapResDto getLikePost(Long memberIdx) {
-        Optional<Member> targetMember;
-
-        try{
-            targetMember = memberRepository.findById(memberIdx);
-        }catch (Exception exception){
-            log.error(exception.getMessage());
-            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
-        }
-
-        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
 
         Optional<List<Post>> postIdxList;
 
         try{
-            postIdxList  = postLikeRepository.findPostIdxByMemberIdx(targetMember.get());
+            postIdxList  = postRepository.findPostIdxByMemberIdx(memberIdx);
         }catch (Exception exception){
+            exception.printStackTrace();
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
@@ -304,7 +295,7 @@ public class MemberService {
         Optional<List<Post>> postIdxList;
 
         try{
-            postIdxList = postTagRepository.findPostIdxByMemberIdx(targetMember.get());
+            postIdxList = postRepository.findPostIdxByMemberIdx(targetMember.get());
 
         }catch (Exception exception){
             log.error(exception.getMessage());
@@ -403,9 +394,11 @@ public class MemberService {
 
     public FindScrapCategoryResDto findScrapCategory(Long memberIdx) {
         try{
-            List<Category> categoryList = categoryScrapRepository.findCategoryIdxByMemberIdx(memberIdx);
+            Optional<Member> target = memberRepository.findById(memberIdx);
+
+            List<Category> categoryList = categoryRepository.findCategoryIdxByMemberIdx(memberIdx);
             List<String> categoryNameList = categoryList.stream()
-                    .map(category -> categoryRepository.findCategoryNameByCategoryIdx(category.getCategoryIdx()))
+                    .map(category -> categoryRepository.findCategoryNameByCategoryIdx(category.getCategoryIdx()).getCategoryName())
                     .collect(Collectors.toList());
             return new FindScrapCategoryResDto(categoryNameList);
         }catch (Exception exception){
