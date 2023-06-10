@@ -39,6 +39,39 @@ public class JwtService {
                 .compact();
     }
 
+    /**
+     * Refresh token 생성
+     * @return String
+     * */
+    public String createRefresh() {
+        Date now = new Date();
+        return Jwts.builder()
+                .setHeaderParam("type","jwt")
+                .claim("valid",1)
+                .setIssuedAt(now)
+                .setExpiration(new Date(System.currentTimeMillis()+2*(1000*60*60*24*365)))
+                .signWith(SignatureAlgorithm.HS256, JWT_SECRET_KEY)
+                .compact();
+    }
+
+    /**
+     * Refresh 검증
+     * @param refreshToken
+     * @return boolean
+     * */
+    public boolean isRefreshValid(String token) {
+        Jws<Claims> claims;
+        try{
+            claims = Jwts.parser()
+                    .setSigningKey(JWT_SECRET_KEY)
+                    .parseClaimsJws(token);
+        } catch (Exception ignored) {
+            throw new BaseException(INVALID_JWT);
+        }
+
+        // 3. userIdx 추출
+        return claims.getBody().get("valid",Integer.class) == 1;
+    }
     /*
     Header에서 X-ACCESS-TOKEN 으로 JWT 추출
     @return String
