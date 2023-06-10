@@ -146,7 +146,7 @@ public class PostService {
 
             Optional<Member> member = memberRepository.findById(memberIdx);
             Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(member.get(), LocalDateTime.now());
-            Optional<List<Post>> tagPostList = postTagRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
+            Optional<List<Post>> tagPostList = postRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
 
             LocalDateTime compareDateTime = LocalDateTime.MAX;
             Post tagPost = null;
