@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e51577f-4f4f-45a0-b353-fbe6082aacc0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/GetOpenAIReqDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleResDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/OpenService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/Open/dto/PostCapsuleReqDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
