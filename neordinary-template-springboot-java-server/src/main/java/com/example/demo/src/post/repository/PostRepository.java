@@ -45,9 +45,11 @@ public interface PostRepository extends JpaRepository<Post, Long> {
             " where POSTLIKE.postIdx = :memberIdx and POSTLIKE.state = 'ACTIVE'")
     Optional<List<Post>> findPostIdxByMemberIdx(@Param("memberIdx") Long memberIdx);
 
-    @Query("SELECT q FROM (SELECT p FROM Post p WHERE p.postYear = :postYear) q" +
-            " JOIN q.postLike l ON q.postIdx = l.postIdx" +
-            " ORDER BY COUNT(l.postIdx) DESC")
+//    @Query("SELECT q FROM (SELECT p FROM Post p WHERE p.postYear = :postYear) q" +
+//            " JOIN q.postLike l ON q.postIdx = l.postIdx" +
+//            " ORDER BY COUNT(l.postIdx) DESC")
+    @Query(nativeQuery = true, value = "select POST.* from POST left join POSTLIKE P on POST.postIdx = P.postIdx" +
+            " where POST.postYear = :postYear order by count(P.postIdx) desc")
     Page<Post> findAllByPostYearLimitMaxCountPostIdx(@Param("postYear") int postYear,
                                                      @Param("pageRequest") Pageable pageRequest);
 
