@@ -6,7 +6,9 @@ import com.example.demo.src.member.dto.*;
 import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.post.entity.Post;
 import com.example.demo.src.post.repository.CommentRepository;
+import com.example.demo.src.post.repository.PostLikeRepository;
 import com.example.demo.src.post.repository.PostRepository;
+import com.example.demo.src.post.repository.PostTagRepository;
 import com.example.demo.utils.JwtService;
 import com.example.demo.utils.SHA256;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +30,10 @@ public class MemberService {
     private final PostRepository postRepository;
 
     private final CommentRepository commentRepository;
+
+    private final PostLikeRepository postLikeRepository;
+
+    private final PostTagRepository postTagRepository;
 
     private final JwtService jwtService;
 
@@ -181,7 +187,7 @@ public class MemberService {
         Optional<List<Long>> postIdxList;
 
         try{
-            postIdxList = commentRepository.findPostIdxByMemberIdx(memberIdx);
+            postIdxList = commentRepository.findPostIdxByMemberIdx(targetMember.get());
         }catch (Exception exception){
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
@@ -235,6 +241,161 @@ public class MemberService {
 
         targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
 
-        Optional<List<Long>> postIdxList;
+        Optional<List<Post>> postIdxList;
+
+        try{
+            postIdxList  = postLikeRepository.findPostIdxByMemberIdx(targetMember.get());
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        List<CapDto> closedList = new ArrayList<>();
+        List<CapDto> opendList = new ArrayList<>();
+
+        postIdxList.orElseThrow(() -> new BaseException(BaseResponseStatus.LIKE_NOT_EXIST));
+
+        LocalDateTime current = LocalDateTime.now();
+
+        for(Post idx : postIdxList.get()){
+            Optional<Post> post = postRepository.findById(idx.getPostIdx());
+
+            if(current.isBefore(post.get().getPostRelease())){
+                // 열리기 전에
+                closedList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+            else{
+                opendList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+        }
+
+        return CapResDto.builder()
+                .closedList(closedList)
+                .openedList(opendList)
+                .build();
+    }
+
+    public CapResDto getTagPost(Long memberIdx) {
+        Optional<Member> targetMember;
+
+        try{
+            targetMember = memberRepository.findById(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
+
+        Optional<List<Post>> postIdxList;
+
+        try{
+            postIdxList = postTagRepository.findPostIdxByMemberIdx(targetMember.get());
+
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        List<CapDto> closedList = new ArrayList<>();
+        List<CapDto> opendList = new ArrayList<>();
+
+        postIdxList.orElseThrow(() -> new BaseException(BaseResponseStatus.TAG_NOT_EXIST));
+
+        LocalDateTime current = LocalDateTime.now();
+
+        for(Post idx : postIdxList.get()){
+            Optional<Post> post = postRepository.findById(idx.getPostIdx());
+
+            if(current.isBefore(post.get().getPostRelease())){
+                // 열리기 전에
+                closedList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+            else{
+                opendList.add(
+                        new CapDto(
+                                post.get().getCreatedAt().toString(),
+                                post.get().getPostRelease().toString(),
+                                post.get().getPostTitle()
+                        )
+                );
+            }
+        }
+
+        return CapResDto.builder()
+                .closedList(closedList)
+                .openedList(opendList)
+                .build();
+    }
+
+    public CapSightResDto getSightPost(Long memberIdx) {
+        Optional<Member> targetMember;
+        Optional<List<Post>> postList;
+
+        try{
+            targetMember = memberRepository.findById(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
+
+        try{
+            postList = postRepository.findAllByMemberIdx(targetMember.get());
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        postList.orElseThrow(() -> new BaseException(BaseResponseStatus.POST_NOT_FOUND));
+
+        List<CapDto> privateList = new ArrayList<>();
+        List<CapDto> publicList = new ArrayList<>();
+
+        for(Post post : postList.get()){
+
+            if(post.getPostPublic()){
+                publicList.add(
+                        new CapDto(
+                                post.getCreatedAt().toString(),
+                                post.getPostRelease().toString(),
+                                post.getPostTitle()
+                        )
+                );
+            }
+            else {
+                privateList.add(
+                        new CapDto(
+                                post.getCreatedAt().toString(),
+                                post.getPostRelease().toString(),
+                                post.getPostTitle()
+                        )
+                );
+            }
+        }
+
+        return CapSightResDto.builder()
+                .privateList(privateList)
+                .publicList(publicList)
+                .build();
     }
 }
