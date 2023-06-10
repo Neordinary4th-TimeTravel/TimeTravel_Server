@@ -10,6 +10,7 @@ import com.example.demo.src.post.dto.*;
 import com.example.demo.src.post.entity.CategoryScrap;
 import com.example.demo.src.post.entity.Post;
 import com.example.demo.src.post.entity.PostLike;
+import com.example.demo.src.post.entity.PostTag;
 import com.example.demo.src.post.repository.*;
 import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +36,7 @@ public class PostService {
     private final CategoryRepository categoryRepository;
     private final CategoryScrapRepository categoryScrapRepository;
     private final PostLikeRepository postLikeRepository;
+    private final PostTagRepository postTagRepository;
 
     private final JwtService jwtService;
 
@@ -143,4 +145,37 @@ public class PostService {
     }
 
 
+    public ViewImminentCapsuleResDto viewImminentCapsule(Long memberIdx) {
+        try{
+            Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(memberIdx, LocalDateTime.now());
+            Optional<List<Post>> tagPostList = postTagRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
+            LocalDateTime compareDateTime = LocalDateTime.MAX;
+            Post tagPost = null;
+            for(Post idx : tagPostList.get()) {
+                Optional<Post> post = postRepository.findById(idx.getPostIdx());
+                if (compareDateTime.isAfter(post.get().getPostRelease()) && post.get().getPostRelease().isAfter(LocalDateTime.now())) {
+                    compareDateTime = post.get().getPostRelease();
+                    tagPost = idx;
+                }
+            }
+            Post post = null;
+            if (tagPost == null || tagPost.getPostRelease().isAfter(userPost.getPostRelease()))
+                post = userPost;
+            else post = tagPost;
+            ViewImminentCapsuleResDto res = ViewImminentCapsuleResDto.builder()
+                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
+                    .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()))
+                    .postYear(post.getPostYear())
+                    .postTitle(post.getPostTitle())
+                    .postText(post.getPostText())
+                    .postSong(post.getPostSong())
+                    .postRelease(post.getPostRelease())
+                    .postPublic(post.getPostPublic())
+                    .build();
+            return res;
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
 }

@@ -33,4 +33,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post findAllByPostIdx(Long postIdx);
 
+    Post findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(@Param("memberIdx") Long memberIdx,
+                                                                         @Param("postRelease") LocalDateTime postRelease);
+
 }

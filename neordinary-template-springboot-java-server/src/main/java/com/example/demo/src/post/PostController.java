@@ -102,6 +102,7 @@ public class PostController {
             return new BaseResponse<>(exception.getStatus());
         }
     }
+
     /**
      * 캡슐 - 캡슐 좋아요 API
      * @RequestBody 캡슐 좋아요에 필요한 DTO
@@ -121,5 +122,18 @@ public class PostController {
         }
     }
 
+    /**
+     * 곧 열리는 캡슐 단일 조회
+     * */
+    @Tag(name = "곧 열리는 캡슐 단일 조회 API")
+    @Operation(summary = "곧 열리는 캡슐 단일 조회", description = "가장 열리기 임박한 캡슐 단일 조회를 위한 API")
+    @GetMapping("/close/{member-id}")
+    public BaseResponse<ViewImminentCapsuleResDto> viewImminentCapsule(@PathVariable("member-idx") Long memberIdx){
+        try{
+            return new BaseResponse<>(postService.viewImminentCapsule(memberIdx));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 }
