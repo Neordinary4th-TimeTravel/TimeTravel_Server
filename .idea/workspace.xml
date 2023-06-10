@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e51577f-4f4f-45a0-b353-fbe6082aacc0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/CapDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/dto/CapResDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/CommentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/common/response/BaseResponseStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +56,14 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
   </component>
@@ -59,7 +74,7 @@
     "RequestMappingsPanelWidth0": "75",
     "RequestMappingsPanelWidth1": "75",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "feat/MemberCap",
     "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>

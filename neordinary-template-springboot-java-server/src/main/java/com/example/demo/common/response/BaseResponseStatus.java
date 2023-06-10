@@ -25,6 +25,8 @@ public enum BaseResponseStatus {
     POST_TEST_EXISTS_MEMO(false,HttpStatus.BAD_REQUEST.value(),"중복된 메모입니다."),
 
     RESPONSE_ERROR(false, HttpStatus.NOT_FOUND.value(), "값을 불러오는데 실패하였습니다."),
+    POST_NOT_FOUND(false, HttpStatus.NOT_FOUND.value(), "캡슐을 찾을 수 없습니다."),
+    COMMENT_NOT_EXIST(false, HttpStatus.NOT_FOUND.value(), "작성한 댓글이 존재하지 않습니다."),
 
     DUPLICATED_EMAIL(false, HttpStatus.BAD_REQUEST.value(), "중복된 이메일입니다."),
     INVALID_MEMO(false,HttpStatus.NOT_FOUND.value(), "존재하지 않는 메모입니다."),
