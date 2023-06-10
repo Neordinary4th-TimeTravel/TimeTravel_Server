@@ -52,7 +52,7 @@ public class OpenController {
             @Parameter(name = "format", description = "chatGPT가 생성할 형식", example = "편지"),
     })
     @GetMapping("/result")
-    public BaseResponse<GetOpenAIReqDto> getOpenAI(@RequestParam(required = true) String keyword, @RequestParam String format) throws BaseException {
+    public BaseResponse<GetOpenAIReqDto> getOpenAI(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestParam(required = true) String keyword, @RequestParam String format) throws BaseException {
         jwtService.getJwt();
         if(format.isEmpty()){
             format = "편지";
