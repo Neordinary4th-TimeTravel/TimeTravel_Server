@@ -7,9 +7,9 @@ import java.util.List;
 
 public class CapSightResDto {
 
-    @Schema(name = "privateList", example = "List", required = true, description = "비공개 리스트")
+    @Schema(name = "privateList", required = true, description = "비공개 리스트")
     List<CapDto> privateList;
-    @Schema(name = "publicList", example = "List", required = true, description = "공개 리스트")
+    @Schema(name = "publicList", required = true, description = "공개 리스트")
     List<CapDto> publicList;
 
     @Builder

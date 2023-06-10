@@ -1,27 +1,32 @@
 package com.example.demo.src.post;
 
+import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponseStatus;
 import com.example.demo.common.scroll.ScrollPaginationCollection;
+import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.member.MemberRepository;
 import com.example.demo.src.post.dto.*;
 import com.example.demo.src.post.entity.CategoryScrap;
 import com.example.demo.src.post.entity.Post;
-import com.example.demo.src.post.repository.CategoryRepository;
-import com.example.demo.src.post.repository.CategoryScrapRepository;
-import com.example.demo.src.post.repository.PostRepository;
+import com.example.demo.src.post.entity.PostLike;
+import com.example.demo.src.post.repository.*;
+import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Slf4j
 @RequiredArgsConstructor
+@Service
 @Transactional
 public class PostService {
 
@@ -29,6 +34,9 @@ public class PostService {
     private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
     private final CategoryScrapRepository categoryScrapRepository;
+    private final PostLikeRepository postLikeRepository;
+
+    private final JwtService jwtService;
 
     public ViewPostCategoryResDto viewPostCategory() throws BaseException {
         try{
@@ -102,4 +110,37 @@ public class PostService {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
+
+    public ToggleCapsuleLikeResDto ToggleCapsuleLike(ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) throws BaseException {
+        jwtService.getJwt();
+        try{
+            Post post = postRepository.findByPostIdxAndState(toggleCapsuleLikeReqDto.getPostIdx(), BaseEntity.State.ACTIVE);
+            Member member = memberRepository.findByMemberIdxAndState(toggleCapsuleLikeReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
+
+            Optional<PostLike> postLike = postLikeRepository.findByMemberIdxAndPostIdxAndState(member, post, BaseEntity.State.ACTIVE);
+
+            if(postLike.isPresent() && postLike.get().getState() == BaseEntity.State.ACTIVE){
+                PostLike like = postLike.get();
+                if ((like.getState() == BaseEntity.State.ACTIVE)) {
+                    like.setState(BaseEntity.State.INACTIVE);
+                } else {
+                    like.setState(BaseEntity.State.ACTIVE);
+                }
+                postLikeRepository.save(like);
+                return new ToggleCapsuleLikeResDto(like.getState());
+            }
+            else{
+                PostLike savePostLike = new PostLike(member,post);
+                postLikeRepository.save(savePostLike);
+                return new ToggleCapsuleLikeResDto(savePostLike.getState());
+            }
+
+
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
+
+
 }

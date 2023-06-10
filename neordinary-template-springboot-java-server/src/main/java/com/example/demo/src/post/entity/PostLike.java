@@ -32,4 +32,9 @@ public class PostLike extends BaseEntity {
         this.memberIdx = memberIdx;
         this.postIdx = postIdx;
     }
+
+    public PostLike(Member memberIdx, Post postIdx) {
+        this.memberIdx = memberIdx;
+        this.postIdx = postIdx;
+    }
 }
