@@ -3,6 +3,8 @@ package com.example.demo.src.post;
 import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponse;
 import com.example.demo.common.response.BaseResponseStatus;
+import com.example.demo.src.post.dto.FindPostByTextReqDto;
+import com.example.demo.src.post.dto.FindPostByTextResDto;
 import com.example.demo.src.post.dto.ScrapPostCategoryReqDto;
 import com.example.demo.src.post.dto.ViewPostCategoryResDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -52,7 +54,19 @@ public class PostController {
         }
     }
 
-    
+    /**
+     * 게시판 캡슐 검색(내용 기반)
+     * */
+    @Tag(name = "게시판 캡슐 검색(내용 기반) API")
+    @Operation(summary = "게시판 캡슐 검색(내용 기반)", description = "게시판에서 특정 내용을 포함한 캡슐 검색을 위한 API")
+    @PostMapping("/category/search")
+    public BaseResponse<FindPostByTextResDto> findPostByText(@RequestParam(name = "post-text") FindPostByTextReqDto req){
+        try{
+            return new BaseResponse<>(postService.findPostByText(req));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 
 }

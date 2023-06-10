@@ -13,5 +13,5 @@ import java.util.List;
 @AllArgsConstructor
 public class ViewPostCategoryResDto {
     @Schema(name = "categoryList", example = "[노래, 영화, 만화]")
-    private List<Category> categoryList;
+    private List<String> categoryList;
 }
