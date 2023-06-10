@@ -26,6 +26,8 @@ public class OpenService {
 
     public PostCapsuleReqDto createCapsule(PostCapsuleResDto postCapsuleReqDto)throws BaseException {
 
+        jwtService.getJwt();
+
         try{
 
             Category categoryIdx = categoryRepository.getByCategoryIdxAndState(postCapsuleReqDto.getCategoryIdx(), BaseEntity.State.ACTIVE);
@@ -34,7 +36,7 @@ public class OpenService {
             boolean test = postCapsuleReqDto.isPostPublic();
             System.out.println(test);
 
-            Post post = new Post(categoryIdx, memberIdx, postCapsuleReqDto.getPostTitle(), postCapsuleReqDto.getPostYear(), postCapsuleReqDto.getPostText(), postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
+            Post post = new Post(categoryIdx, memberIdx, postCapsuleReqDto.getPostTitle(), postCapsuleReqDto.getPostYear(), postCapsuleReqDto.getPostText(), postCapsuleReqDto.getPostSong(), postCapsuleReqDto.getPostRelease(), postCapsuleReqDto.isPostPublic());
             Post newPost = postRepository.save(post);
 
             return new PostCapsuleReqDto(newPost.getPostIdx());
