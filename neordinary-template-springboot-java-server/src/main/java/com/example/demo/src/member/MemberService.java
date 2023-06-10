@@ -222,4 +222,19 @@ public class MemberService {
                 .openedList(opendList)
                 .build();
     }
+
+    public CapResDto getLikePost(Long memberIdx) {
+        Optional<Member> targetMember;
+
+        try{
+            targetMember = memberRepository.findById(memberIdx);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+
+        targetMember.orElseThrow(()-> new BaseException(BaseResponseStatus.NOT_FIND_USER));
+
+        Optional<List<Long>> postIdxList;
+    }
 }

@@ -175,9 +175,20 @@ public class MemberController {
         }
     }
     /**
-     * 내가 스크랩을 한 캡슐 목록
+     * 내가 좋아요를 한 캡슐 목록
      * */
+    public BaseResponse<CapResDto> getLikePost(@RequestHeader("X-ACCESS-TOKEN") String token, @PathVariable("member-idx") Long memberIdx){
+        try{
 
+            Long parsedIdx = jwtService.getUserId();
+
+            if(!parsedIdx.equals(memberIdx)) throw new BaseException(BaseResponseStatus.INVALID_JWT);
+
+            return new BaseResponse<>(memberService.getLikePost(memberIdx));
+        }catch (BaseException exception){
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
     /**
      * 내가 태그 당한 캡슐 목록
      * */
