@@ -7,10 +7,7 @@ import com.example.demo.common.scroll.ScrollPaginationCollection;
 import com.example.demo.src.member.entity.Member;
 import com.example.demo.src.member.MemberRepository;
 import com.example.demo.src.post.dto.*;
-import com.example.demo.src.post.entity.CategoryScrap;
-import com.example.demo.src.post.entity.Post;
-import com.example.demo.src.post.entity.PostLike;
-import com.example.demo.src.post.entity.PostTag;
+import com.example.demo.src.post.entity.*;
 import com.example.demo.src.post.repository.*;
 import com.example.demo.utils.JwtService;
 import lombok.RequiredArgsConstructor;
@@ -79,8 +76,9 @@ public class PostService {
 
     public FindPostByCategoryResDto findPostByCategory(Long categoryIdx, int scrollSize) {
         try{
+            Optional<Category> category = categoryRepository.findById(categoryIdx);
             Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
-            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(categoryIdx, pageRequest);
+            Page<Post> page = postRepository.findAllByCategoryIdxOrderByCreatedAtDesc(category.get(), pageRequest);
             List<Post> postTitleList = page.getContent();
 
             ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
@@ -145,7 +143,8 @@ public class PostService {
 
     public ViewImminentCapsuleResDto viewImminentCapsule(Long memberIdx) {
         try{
-            Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(memberIdx, LocalDateTime.now());
+            Optional<Member> member = memberRepository.findById(memberIdx);
+            Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(member.get(), LocalDateTime.now());
             Optional<List<Post>> tagPostList = postTagRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
             LocalDateTime compareDateTime = LocalDateTime.MAX;
             Post tagPost = null;
