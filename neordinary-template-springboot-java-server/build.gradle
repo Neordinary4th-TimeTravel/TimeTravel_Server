@@ -1,0 +1,64 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+compileJava.options.encoding = 'UTF-8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.jetbrains:annotations:23.0.0'
+
+
+    // Spring Boot Starter
+    testImplementation ('org.springframework.boot:spring-boot-starter-test')
+
+    // Lombok
+    implementation ('org.projectlombok:lombok')
+    compileOnly ('org.projectlombok:lombok:1.18.24')
+    annotationProcessor ('org.projectlombok:lombok:1.18.24')
+
+    // DB
+    runtimeOnly ('mysql:mysql-connector-java') //mysql8
+    //runtimeOnly 'mysql:mysql-connector-java:5.1.47' //mysql5
+    implementation ('org.springframework.boot:spring-boot-starter-jdbc')
+    implementation ('org.springframework.boot:spring-boot-starter-data-jpa')
+
+
+    // Web
+    implementation ('org.springframework.boot:spring-boot-starter-web')
+    implementation('org.springframework.boot:spring-boot-starter')
+    implementation('org.springframework.boot:spring-boot-starter-web')
+
+    // Validation
+    implementation('org.springframework.boot:spring-boot-starter-validation')
+
+    // jwt
+    implementation(group: 'io.jsonwebtoken', name: 'jjwt', version: '0.11.5')
+    implementation('io.jsonwebtoken:jjwt:0.9.1')
+
+    // Swagger
+    implementation ('org.springdoc:springdoc-openapi-ui:1.6.14')
+
+
+}
+
+test {
+    useJUnitPlatform()
+}

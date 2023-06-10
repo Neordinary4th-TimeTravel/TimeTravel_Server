@@ -1,0 +1,92 @@
+spring:
+  profiles:
+    group: # Run - Edit Configurations - Active Profiles에서 설정
+      dev: common, dev
+      prod: common, prod
+---
+spring:
+  config:
+    activate:
+      on-profile: "common"
+  application:
+    name: demo
+  sql:
+    init:
+      platform: mysql
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo?autoReconnect=true&setTimezone=Asia/Seoul # 변경해주세요
+    username: # username
+    password: # password
+    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
+    # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
+  OAuth2:
+    google:
+      url: https://accounts.google.com/o/oauth2/v2/auth
+      client-id: # client-id
+      client-secret:  # client-secret
+      callback-login-url: http://localhost:9000/app/users/auth/google/login/callback # 등록한 정보에 맞게 수정해주세요
+      scope: https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile # 등록한 정보에 맞게 수정해주세요
+
+spring.sql.init.platform: mysql
+server:
+  port: 9000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    groups-order: DESC
+    operationsSorter: method
+    disable-swagger-default-url: true
+    display-request-duration: true
+  api-docs:
+    path: /api-docs
+  show-actuator: true
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match:
+    - /**
+
+jwt:
+  secret-key: UwKYibQQgkW7g-*k.ap9kje-wxBHb9wdXoBT4vnt4P3sJWt-Nu  # JWT key. 수정해주세요
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: none
+      # create, update, create-drop, none 등의 옵션이 있습니다.
+      # create: 기존테이블 삭제 후 다시 생성
+      # update: 변경된 부분만 반영
+      # create-drop: create와 같으나 종료 시점에 테이블 DROP
+      # none: 사용하지 않음
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    # DDl 생성 시 데이터베이스 고유의 기능 사용여부
+    generate-ddl: false
+    # 실행되는 쿼리문 보여주기 여부
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+---
+spring:
+  config:
+    activate:
+      on-profile: "dev"
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: create-drop
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    generate-ddl: false
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
