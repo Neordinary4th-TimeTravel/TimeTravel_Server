@@ -1,9 +1,14 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="e6041b2b-97dd-4325-ba95-1e1044ee3545" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostLikeRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -20,12 +25,25 @@
       <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/member/MemberService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/CommentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/repository/PostRepository.java" afterDir="false" />
+=======
+    <list default="true" id="6e51577f-4f4f-45a0-b353-fbe6082aacc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/neordinary-template-springboot-java-server/src/main/java/com/example/demo/src/post/entity/Post.java" afterDir="false" />
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/neordinary-template-springboot-java-server">
+      <ProjectState />
+    </projectState>
+  </component>
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -34,6 +52,7 @@
         </task>
         <projects_view>
           <tree_state>
+<<<<<<< HEAD
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -51,6 +70,9 @@
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
             </expand>
+=======
+            <expand />
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
             <select />
           </tree_state>
         </projects_view>
@@ -60,6 +82,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="Interface" />
       </list>
     </option>
@@ -97,6 +120,30 @@
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
+=======
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Gradle.neordinary-template-springboot-java-server [clean]">
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
     <configuration name="neordinary-template-springboot-java-server [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -116,6 +163,7 @@
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
       <DebugAllEnabled>false</DebugAllEnabled>
+<<<<<<< HEAD
       <ForceTestExec>false</ForceTestExec>
       <method v="2" />
     </configuration>
@@ -129,6 +177,27 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+=======
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="demo.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="demo.main" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="common, dev" />
+      <module name="demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
       <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
         <option name="credential" />
         <option name="region" />
@@ -139,6 +208,7 @@
       </method>
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Gradle.neordinary-template-springboot-java-server [build]" />
       <item itemvalue="Gradle.neordinary-template-springboot-java-server [clean]" />
       <item itemvalue="Spring Boot.DemoApplication" />
@@ -147,6 +217,12 @@
       <list>
         <item itemvalue="Spring Boot.DemoApplication" />
         <item itemvalue="Gradle.neordinary-template-springboot-java-server [build]" />
+=======
+      <item itemvalue="Gradle.neordinary-template-springboot-java-server [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
         <item itemvalue="Gradle.neordinary-template-springboot-java-server [clean]" />
       </list>
     </recent_temporary>
@@ -154,4 +230,21 @@
   <component name="TaskManager">
     <servers />
   </component>
+<<<<<<< HEAD
 </project>
+=======
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
+=======
+>>>>>>> ef2ad9759b7e5c5e0e5ecd538260b836146c206f
+>>>>>>> b403e9056ee031643747a8e3f3f08204d4f9eafe
