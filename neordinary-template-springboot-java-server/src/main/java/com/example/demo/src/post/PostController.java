@@ -1,8 +1,13 @@
 package com.example.demo.src.post;
 
+import com.example.demo.common.entity.BaseEntity;
 import com.example.demo.common.exceptions.BaseException;
 import com.example.demo.common.response.BaseResponse;
 import com.example.demo.common.response.BaseResponseStatus;
+import com.example.demo.src.member.entity.Member;
+import com.example.demo.src.post.dto.*;
+import com.example.demo.src.post.entity.Post;
+import com.example.demo.src.post.entity.PostLike;
 import com.example.demo.src.post.dto.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -12,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Tag(name = "캡슐 API")
 @ApiResponses({
@@ -92,6 +98,24 @@ public class PostController {
     public BaseResponse<ViewPostResDto> viewPost(@RequestParam(name = "post-idx") Long postIdx){
         try{
             return new BaseResponse<>(postService.viewPost(postIdx));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+    /**
+     * 캡슐 - 캡슐 좋아요 API
+     * @RequestBody 캡슐 좋아요에 필요한 DTO
+     * @return
+     */
+    @Tag(name = "캡슐 좋아요 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
+    })
+    @Operation(summary = "캡슐 좋아요 API", description = "캡슐 등록하기 위한 api")
+    @PostMapping("capsule")
+    public BaseResponse<ToggleCapsuleLikeResDto> createCapsule(@RequestParam(value = "X-ACCESS-TOKEN",required = false) String token, @RequestBody ToggleCapsuleLikeReqDto toggleCapsuleLikeReqDto) {
+        try{
+            return new BaseResponse<>(postService.ToggleCapsuleLike(toggleCapsuleLikeReqDto));
         }catch (BaseException exception) {
             return new BaseResponse<>(exception.getStatus());
         }
