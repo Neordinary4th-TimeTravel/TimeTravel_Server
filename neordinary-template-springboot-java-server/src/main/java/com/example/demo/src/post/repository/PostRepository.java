@@ -36,4 +36,9 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Post findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(@Param("memberIdx") Long memberIdx,
                                                                          @Param("postRelease") LocalDateTime postRelease);
 
+    @Query("SELECT q FROM (SELECT p FROM Post p WHERE p.postYear = :postYear) q" +
+            "JOIN q.postLike l ON q.postIdx = l.postIdx" +
+            "ORDER BY COUNT(l.postIdx) DESC")
+    Page<Post> findAllByPostYearLimitMaxCountPostIdx(@Param("postYear") int postYear,
+                                                     @Param("pageRequest") Pageable pageRequest);
 }

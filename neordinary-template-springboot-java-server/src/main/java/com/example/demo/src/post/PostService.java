@@ -176,4 +176,19 @@ public class PostService {
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
         }
     }
+
+    public FindPostByYearResDto findPostByYear(int postYear, int scrollSize) {
+        try{
+            Pageable pageRequest = PageRequest.of(0, scrollSize + 1);
+            Page<Post> page = postRepository.findAllByPostYearLimitMaxCountPostIdx(postYear, pageRequest);
+            List<Post> postTitleList = page.getContent();
+
+            ScrollPaginationCollection<Post> postCursor = ScrollPaginationCollection.of(postTitleList, scrollSize);
+
+            return FindPostByYearResDto.of(postCursor, postRepository);
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
 }

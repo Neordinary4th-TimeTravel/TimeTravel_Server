@@ -136,4 +136,19 @@ public class PostController {
         }
     }
 
+    /**
+     * 설정 연도에 따른 실시간 인기 캡슐 목록 조회
+     * */
+    @Tag(name = "설정 연도에 따른 실시간 인기 캡슐 목록 조회 API")
+    @Operation(summary = "설정 연도에 따른 실시간 인기 캡슐 목록 조회", description = "설정 연도에 따른 실시간 인기 캡슐 목록 조회를 위한 API")
+    @GetMapping("/category/search/year")
+    public BaseResponse<FindPostByYearResDto> findPostByYear(@RequestParam(name = "post-year") int postYear,
+                                         @RequestParam(name = "scroll-size") int scrollSize){
+        try{
+            return new BaseResponse<>(postService.findPostByYear(postYear, scrollSize));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
+
 }
