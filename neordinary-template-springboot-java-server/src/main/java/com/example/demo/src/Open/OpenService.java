@@ -21,12 +21,9 @@ public class OpenService {
     private final PostOpenRepository postRepository;
     private final CategoryOpenRepositroy categoryRepository;
     private final MemberOpenRepository memberRepository;
-    @Autowired
-    private final JwtService jwtService;
 
     public PostCapsuleReqDto createCapsule(PostCapsuleResDto postCapsuleReqDto)throws BaseException {
 
-        jwtService.getJwt();
 
         try{
 
