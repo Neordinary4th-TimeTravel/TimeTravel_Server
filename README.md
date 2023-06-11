@@ -34,6 +34,8 @@
 
 ---------------
 ## OpenAI 활용
+ChatGpt와 한 번 대화하는 기능 구현 
+
 https://platform.openai.com/docs/api-reference/completions/create 를 참고하여 java로 작성
 <pre>
 <code>
@@ -55,4 +57,95 @@ https://platform.openai.com/docs/api-reference/completions/create 를 참고하�
  
 </code>
 </pre>
-ChatGpt와 한 번 대화하는 기능 구현
+
+--------------------
+### 파일 구조
+
+<pre>
+<code>
+ demo
+    ├── DemoApplication.java
+    ├── common
+    │   ├── Constant.java
+    │   ├── config
+    │   │   ├── RestTemplateConfig.java
+    │   │   ├── SwaggerConfig.java
+    │   │   └── WebConfig.java
+    │   ├── entity
+    │   │   └── BaseEntity.java
+    │   ├── exceptions
+    │   │   ├── BaseException.java
+    │   │   └── ExceptionAdvice.java
+    │   ├── response
+    │   │   ├── BaseResponse.java
+    │   │   └── BaseResponseStatus.java
+    │   ├── scroll
+    │   │   └── ScrollPaginationCollection.java
+    │   └── secret
+    │       └── Secret.java
+    ├── src
+    │   ├── Open
+    │   │   ├── CategoryOpenRepositroy.java
+    │   │   ├── MemberOpenRepository.java
+    │   │   ├── OpenController.java
+    │   │   ├── OpenService.java
+    │   │   ├── PostOpenRepository.java
+    │   │   └── dto
+    │   │       ├── GetOpenAIReqDto.java
+    │   │       ├── Message.java
+    │   │       ├── PostCapsuleReqDto.java
+    │   │       └── PostCapsuleResDto.java
+    │   ├── member
+    │   │   ├── MemberController.java
+    │   │   ├── MemberRepository.java
+    │   │   ├── MemberService.java
+    │   │   ├── dto
+    │   │   │   ├── CapDto.java
+    │   │   │   ├── CapResDto.java
+    │   │   │   ├── CapSightResDto.java
+    │   │   │   ├── EmailCheckReqDto.java
+    │   │   │   ├── EmailCheckResDto.java
+    │   │   │   ├── FindScrapCategoryResDto.java
+    │   │   │   ├── JoinReqDto.java
+    │   │   │   ├── JoinResDto.java
+    │   │   │   ├── LoginReqDto.java
+    │   │   │   ├── LoginResDto.java
+    │   │   │   ├── PatchNicknameReqDto.java
+    │   │   │   └── PatchNicknameResDto.java
+    │   │   └── entity
+    │   │       └── Member.java
+    │   └── post
+    │       ├── PostController.java
+    │       ├── PostService.java
+    │       ├── dto
+    │       │   ├── CreateCommentReqDto.java
+    │       │   ├── FindPostByCategoryResDto.java
+    │       │   ├── FindPostByTextResDto.java
+    │       │   ├── FindPostByYearResDto.java
+    │       │   ├── ScrapPostCategoryReqDto.java
+    │       │   ├── ToggleCapsuleLikeReqDto.java
+    │       │   ├── ToggleCapsuleLikeResDto.java
+    │       │   ├── ViewImminentCapsuleResDto.java
+    │       │   ├── ViewPostCategoryResDto.java
+    │       │   └── ViewPostResDto.java
+    │       ├── entity
+    │       │   ├── Category.java
+    │       │   ├── CategoryScrap.java
+    │       │   ├── Comment.java
+    │       │   ├── Post.java
+    │       │   ├── PostLike.java
+    │       │   └── PostTag.java
+    │       └── repository
+    │           ├── CategoryRepository.java
+    │           ├── CategoryScrapRepository.java
+    │           ├── CommentRepository.java
+    │           ├── PostLikeRepository.java
+    │           ├── PostRepository.java
+    │           └── PostTagRepository.java
+    └── utils
+        ├── JwtService.java
+        ├── SHA256.java
+        └── ValidationRegex.java
+        
+        </code>
+</pre>
