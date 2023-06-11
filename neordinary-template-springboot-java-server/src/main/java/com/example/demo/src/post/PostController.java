@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Tag(name = "캡슐 API")
@@ -171,5 +172,21 @@ public class PostController {
         }
     }
 
+    /**
+     * 캡슐 - 특정 캡슐 댓글 목록 조회 API
+     **/
+    @Tag(name = "특정 캡슐 댓글 목록 조회 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "요청에 성공하였습니다.")
+    })
+    @Operation(summary = "특정 캡슐 댓글 목록 조회 API", description = "특정 캡슐의 댓글 목록을 조회하기 위한 api")
+    @GetMapping("/comment/{postIdx}")
+    public BaseResponse<List<ViewCommentResDto>> viewComment(@PathVariable("postIdx") Long postIdx) {
+        try{
+            return new BaseResponse<>(postService.viewComment(postIdx));
+        }catch (BaseException exception) {
+            return new BaseResponse<>(exception.getStatus());
+        }
+    }
 
 }

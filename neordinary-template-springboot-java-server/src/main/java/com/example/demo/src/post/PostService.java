@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -203,6 +204,27 @@ public class PostService {
                     .build();
             commentRepository.save(comment);
             return BaseResponseStatus.SUCCESS;
+        }catch (Exception exception){
+            log.error(exception.getMessage());
+            throw new BaseException(BaseResponseStatus.DATABASE_ERROR);
+        }
+    }
+
+    public List<ViewCommentResDto> viewComment(Long postIdx) {
+        try{
+            Post post = postRepository.findAllByPostIdx(postIdx);
+            List<Comment> commentList = commentRepository.findAllByPostIdx(post);
+            List<ViewCommentResDto> resList = new ArrayList<>();
+            for (Comment comment : commentList) {
+                ViewCommentResDto res = ViewCommentResDto.builder()
+                        .commentIdx(comment.getCommentIdx())
+                        .commentText(comment.getCommentText())
+                        .memberIdx(comment.getMemberIdx())
+                        .postIdx(comment.getPostIdx())
+                        .build();
+                resList.add(res);
+            }
+            return resList;
         }catch (Exception exception){
             log.error(exception.getMessage());
             throw new BaseException(BaseResponseStatus.DATABASE_ERROR);

@@ -19,7 +19,7 @@ public class FindPostByYearResDto {
 
     private static final long LAST_CURSOR = -1L;
 
-    @Schema(name = "postTitleList", example = "[제목1, 제목2, 제목3]", description = "캡슐 목록(제목)")
+
     private List<PostPreviewDto> postTitleList = new ArrayList<>();
     @Schema(name = "nextCursor", example = "4", description = "다음 커서")
     private long nextCursor;
