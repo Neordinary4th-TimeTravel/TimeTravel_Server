@@ -151,6 +151,7 @@ public class MemberService {
                 // 열리기 전에
                 closedList.add(
                         new CapDto(
+                                post.getPostIdx(),
                                 post.getCreatedAt().toString(),
                                 post.getPostRelease().toString(),
                                 post.getPostTitle()
@@ -160,6 +161,7 @@ public class MemberService {
             else{
                 opendList.add(
                         new CapDto(
+                                post.getPostIdx(),
                                 post.getCreatedAt().toString(),
                                 post.getPostRelease().toString(),
                                 post.getPostTitle()
@@ -208,6 +210,7 @@ public class MemberService {
                 // 열리기 전에
                 closedList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -217,6 +220,7 @@ public class MemberService {
             else{
                 opendList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -257,6 +261,7 @@ public class MemberService {
                 // 열리기 전에
                 closedList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -266,6 +271,7 @@ public class MemberService {
             else{
                 opendList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -316,6 +322,7 @@ public class MemberService {
                 // 열리기 전에
                 closedList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -325,6 +332,7 @@ public class MemberService {
             else{
                 opendList.add(
                         new CapDto(
+                                post.get().getPostIdx(),
                                 post.get().getCreatedAt().toString(),
                                 post.get().getPostRelease().toString(),
                                 post.get().getPostTitle()
@@ -369,6 +377,7 @@ public class MemberService {
             if(post.getPostPublic()){
                 publicList.add(
                         new CapDto(
+                                post.getPostIdx(),
                                 post.getCreatedAt().toString(),
                                 post.getPostRelease().toString(),
                                 post.getPostTitle()
@@ -378,6 +387,7 @@ public class MemberService {
             else {
                 privateList.add(
                         new CapDto(
+                                post.getPostIdx(),
                                 post.getCreatedAt().toString(),
                                 post.getPostRelease().toString(),
                                 post.getPostTitle()
