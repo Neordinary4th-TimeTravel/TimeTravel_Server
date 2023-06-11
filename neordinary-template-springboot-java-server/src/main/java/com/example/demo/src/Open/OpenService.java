@@ -26,8 +26,7 @@ public class OpenService {
 
 
         try{
-
-            Category categoryIdx = categoryRepository.getByCategoryIdxAndState(postCapsuleReqDto.getCategoryIdx(), BaseEntity.State.ACTIVE);
+            Category categoryIdx = categoryRepository.getByCategoryNameAndState(postCapsuleReqDto.getCategoryName(), BaseEntity.State.ACTIVE);
             Member memberIdx = memberRepository.getByMemberIdxAndState(postCapsuleReqDto.getMemberIdx(), BaseEntity.State.ACTIVE);
 
             boolean test = postCapsuleReqDto.isPostPublic();

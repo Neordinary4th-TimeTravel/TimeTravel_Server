@@ -6,5 +6,5 @@ import com.example.demo.src.post.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CategoryOpenRepositroy  extends JpaRepository<Category, Long> {
-    Category getByCategoryIdxAndState(Long categoryIdx, BaseEntity.State state);
+    Category getByCategoryNameAndState(String categoryName, BaseEntity.State state);
 }

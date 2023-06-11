@@ -12,6 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CapDto {
 
+    @Schema(name = "capsuleIdx", example = "1", required = true, description = "캡슐 인덱스")
+    private Long capsuleIdx;
     @Schema(name = "creationDateTime", example = "DATETIME", required = true, description = "생성일")
     private String creationDateTime;
     @Schema(name = "releaseDateTime", example = "DATETIME", required = true, description = "해제일")
