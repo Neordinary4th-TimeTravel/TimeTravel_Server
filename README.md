@@ -13,3 +13,42 @@
 #### Project execution period : 2023.06.10 ~ 2023.06.11
 
 #### Contributors : [@이지호](https://github.com/destiny3912) | [@길지운](https://github.com/wldns2577) | [@유종건](https://github.com/mycookie1) 
+------------------------
+## 개발 환경
+- JDK 8
+- Springboot
+- Spring Data JPA + JPQL
+- Swagger
+- Docker
+- AWS EC2 + RDS
+- MySQL
+- OpenAI
+----------------------
+# 주요 기능
+- 캡슐(게시글) ..
+- 검색
+- OpenAI를 활용한..
+
+---------------
+## OpenAI 활용
+https://platform.openai.com/docs/api-reference/completions/create 를 참고하여 java로 작성
+<pre>
+<code>
+ // header 등록: Content-Type, Authorization(API KEY), Message
+ HttpHeaders headers = new HttpHeaders();
+ headers.setContentType(MediaType.APPLICATION_JSON);
+ headers.set("Authorization", "Bearer " + Secret.OPEN_API_SECRET_KEY);
+
+ Map<String, Object> requestBody = new HashMap<>();
+
+ // Message: {role, content}, Message 등록
+ requestBody.put("model", "gpt-3.5-turbo");
+ requestBody.put("messages", messages);
+ 
+ // respone 구하기
+ // ENDPOINT = "https://api.openai.com/v1/chat/completions"
+ RestTemplate restTemplate = new RestTemplate();
+ ResponseEntity<Map> response = restTemplate.postForEntity(ENDPOINT, requestEntity, Map.class);
+ 
+</code>
+</pre>
