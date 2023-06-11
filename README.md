@@ -25,6 +25,7 @@
 - OpenAI
 ----------------------
 # 주요 기능
+ <img src = "https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/ce332878-ce6d-483b-b57a-cb741d657b74" width = "50%" height = "60%"> <img src = "https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/ad2d3766-7a32-4aa0-bf26-ad3356b78bbf" width = "50%" height = "60%"> 
 - 캡슐(게시글) ..
 - 검색
 - OpenAI를 활용한..
