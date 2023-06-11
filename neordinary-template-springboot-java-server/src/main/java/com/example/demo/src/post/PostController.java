@@ -128,7 +128,7 @@ public class PostController {
      * */
     @Tag(name = "곧 열리는 캡슐 단일 조회 API")
     @Operation(summary = "곧 열리는 캡슐 단일 조회", description = "가장 열리기 임박한 캡슐 단일 조회를 위한 API")
-    @GetMapping("/close/{memberId}")
+    @GetMapping("/close/{memberIdx}")
     public BaseResponse<ViewImminentCapsuleResDto> viewImminentCapsule(@PathVariable("memberIdx") Long memberIdx){
         try{
             return new BaseResponse<>(postService.viewImminentCapsule(memberIdx));

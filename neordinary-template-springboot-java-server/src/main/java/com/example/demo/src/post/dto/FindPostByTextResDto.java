@@ -20,11 +20,11 @@ public class FindPostByTextResDto {
     private static final long LAST_CURSOR = -1L;
 
     @Schema(name = "postTitleList", example = "[제목1, 제목2, 제목3]", description = "캡슐 목록(제목)")
-    private List<String> postTitleList = new ArrayList<>();
+    private List<PostPreviewDto> postTitleList = new ArrayList<>();
     @Schema(name = "nextCursor", example = "4", description = "다음 커서")
     private long nextCursor;
 
-    public FindPostByTextResDto(List<String> postTitleList, long nextCursor) {
+    public FindPostByTextResDto(List<PostPreviewDto> postTitleList, long nextCursor) {
         this.postTitleList = postTitleList;
         this.nextCursor = nextCursor;
     }
@@ -44,9 +44,9 @@ public class FindPostByTextResDto {
         return new FindPostByTextResDto(getPostTitle(postScroll, postRepository), nextCursor);
     }
 
-    private static List<String> getPostTitle(List<Post> postScroll, PostRepository postRepository) {
+    private static List<PostPreviewDto> getPostTitle(List<Post> postScroll, PostRepository postRepository) {
         return postScroll.stream()
-                .map(post -> postRepository.findPostTitleByPostIdx(post.getPostIdx()))
+                .map(post -> new PostPreviewDto(postRepository.findAllByPostIdx(post.getPostIdx())))
                 .collect(Collectors.toList());
     }
 

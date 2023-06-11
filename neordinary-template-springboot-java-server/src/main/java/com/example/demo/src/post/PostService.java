@@ -95,7 +95,7 @@ public class PostService {
         try{
             Post post = postRepository.findAllByPostIdx(postIdx);
             ViewPostResDto res = ViewPostResDto.builder()
-                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
+                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()).getNickname())
                     .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()).getCategoryName())
                     .postYear(post.getPostYear())
                     .postTitle(post.getPostTitle())
@@ -146,7 +146,7 @@ public class PostService {
         try{
 
             Optional<Member> member = memberRepository.findById(memberIdx);
-            Post userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(member.get(), LocalDateTime.now());
+            List<Post> userPost = postRepository.findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(member.get(), LocalDateTime.now());
             Optional<List<Post>> tagPostList = postRepository.findPostIdxByMemberIdx(memberRepository.findByMemberIdxAndState(memberIdx, BaseEntity.State.ACTIVE));
 
             LocalDateTime compareDateTime = LocalDateTime.MAX;
@@ -159,11 +159,11 @@ public class PostService {
                 }
             }
             Post post = null;
-            if (tagPost == null || tagPost.getPostRelease().isAfter(userPost.getPostRelease()))
-                post = userPost;
+            if (tagPost == null || tagPost.getPostRelease().isAfter(userPost.get(0).getPostRelease()))
+                post = userPost.get(0);
             else post = tagPost;
             ViewImminentCapsuleResDto res = ViewImminentCapsuleResDto.builder()
-                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()))
+                    .memberNickname(memberRepository.findNicknameByMemberIdx(post.getMemberIdx().getMemberIdx()).getNickname())
                     .categoryName(categoryRepository.findCategoryNameByCategoryIdx(post.getCategoryIdx().getCategoryIdx()).getCategoryName())
                     .postYear(post.getPostYear())
                     .postTitle(post.getPostTitle())

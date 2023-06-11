@@ -34,7 +34,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
 
     Post findAllByPostIdx(Long postIdx);
 
-    Post findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(@Param("memberIdx") Member memberIdx,
+    List<Post> findAllByMemberIdxAndPostReleaseGreaterThanOrderByPostReleaseDesc(@Param("memberIdx") Member memberIdx,
                                                                          @Param("postRelease") LocalDateTime postRelease);
 
     @Query(nativeQuery = true, value = "select * from POST left join POSTTAG P on POST.postIdx = P.postIdx where " +
