@@ -52,3 +52,4 @@ https://platform.openai.com/docs/api-reference/completions/create 를 참고하�
  
 </code>
 </pre>
+ChatGpt와 한 번 대화하는 기능 구현
