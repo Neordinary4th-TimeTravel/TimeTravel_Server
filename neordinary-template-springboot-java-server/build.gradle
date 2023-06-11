@@ -25,6 +25,9 @@ repositories {
 dependencies {
     implementation 'org.jetbrains:annotations:23.0.0'
 
+    //OpenAI
+    implementation group: 'com.theokanning.openai-gpt3-java', name: 'client', version: '0.9.0'
+
 
     // Spring Boot Starter
     testImplementation ('org.springframework.boot:spring-boot-starter-test')

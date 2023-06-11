@@ -25,6 +25,11 @@ public enum BaseResponseStatus {
     POST_TEST_EXISTS_MEMO(false,HttpStatus.BAD_REQUEST.value(),"중복된 메모입니다."),
 
     RESPONSE_ERROR(false, HttpStatus.NOT_FOUND.value(), "값을 불러오는데 실패하였습니다."),
+    POST_NOT_FOUND(false, HttpStatus.NOT_FOUND.value(), "캡슐을 찾을 수 없습니다."),
+    COMMENT_NOT_EXIST(false, HttpStatus.NOT_FOUND.value(), "작성한 댓글이 존재하지 않습니다."),
+    LIKE_NOT_EXIST(false, HttpStatus.NOT_FOUND.value(), "좋아요한 캡슐을 찾을 수 없습니다."),
+    TAG_NOT_EXIST(false, HttpStatus.NOT_FOUND.value(), "태그한 캡슐을 찾을 수 없습니다."),
+
 
     DUPLICATED_EMAIL(false, HttpStatus.BAD_REQUEST.value(), "중복된 이메일입니다."),
     INVALID_MEMO(false,HttpStatus.NOT_FOUND.value(), "존재하지 않는 메모입니다."),
@@ -50,8 +55,8 @@ public enum BaseResponseStatus {
     DELETE_FAIL_USERNAME(false,HttpStatus.INTERNAL_SERVER_ERROR.value(),"유저 삭제 실패"),
     MODIFY_FAIL_MEMO(false,HttpStatus.INTERNAL_SERVER_ERROR.value(),"메모 수정 실패"),
 
-    UNEXPECTED_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "예상치 못한 에러가 발생했습니다.");
-
+    UNEXPECTED_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "예상치 못한 에러가 발생했습니다."),
+    OPENAI_ERROR(false, HttpStatus.INTERNAL_SERVER_ERROR.value(), "OPENAI 연결에 실패했습니다");
 
     private final boolean isSuccess;
     private final int code;

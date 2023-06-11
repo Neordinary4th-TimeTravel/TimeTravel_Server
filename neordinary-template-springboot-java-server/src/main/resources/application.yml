@@ -14,9 +14,9 @@ spring:
     init:
       platform: mysql
   datasource:
-    url: jdbc:mysql://localhost:3306/demo?autoReconnect=true&setTimezone=Asia/Seoul # 변경해주세요
-    username: # username
-    password: # password
+    url: jdbc:mysql://database-1.cekg2t7qwqmr.ap-northeast-2.rds.amazonaws.com:3306/hack # 변경해주세요
+    username: admin # username
+    password: q3143118 # password
     driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
     # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
   OAuth2:
@@ -81,7 +81,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     generate-ddl: false
