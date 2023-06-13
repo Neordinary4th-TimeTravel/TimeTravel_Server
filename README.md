@@ -1,6 +1,6 @@
 # TimeTravel_Server
 
-<img width="1309" alt="image" src="https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/1d3cd606-98d0-45f4-9627-c7e43f151cdb">
+<img width="1309" alt="image" src="https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/8b3217a7-4389-412d-90b0-fd46b9bfeb3a">
 
 # [2023 4th Ne(o)rdinary HACKATHON]
 
@@ -26,7 +26,7 @@
 ----------------------
 
 # 주요 기능
- <img src = "https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/2b2eb108-2f38-4b92-8d60-4e08d1c064e2" width = "100%" height = "100%">
+ <img src = "https://github.com/Neordinary4th-TimeTravel/TimeTravel_Server/assets/103025266/0f5fd970-804d-488c-b912-87f6574773ea" width = "100%" height = "100%">
  
 - 캡슐(게시글) ..
 - 커뮤니티 ..
